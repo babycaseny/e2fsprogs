@@ -1,0 +1,23 @@
+mke2fs -q -F -o Linux -b 1024 test.img
+mke2fs 1.43-WIP (29-Mar-2015)
+Discarding device blocks:        done                            
+Creating filesystem with 512 1k blocks and 64 inodes
+
+Allocating group tables:    done                            
+Writing inode tables:    done                            
+Writing superblocks and filesystem accounting information:    done
+
+This filesystem will be automatically checked every 27 mounts or
+180 days, whichever comes first.  Use tune2fs -c or -i to override.
+../tests/progs/crcsum before mke2fs 3905249805
+using mke2fs to test e2undo
+Overwriting existing filesystem; this can be undone using the command:
+    e2undo /tmp/mke2fs-e2fsprogs-tmp-u_mke2fs.EHyJoS.e2undo /tmp/e2fsprogs-tmp-u_mke2fs.EHyJoS
+
+../tests/progs/crcsum after mke2fs 499187721
+Replayed transaction of size 32768 at location 0
+Replayed transaction of size 32768 at location 14
+Replayed transaction of size 0 at location 16
+Replayed transaction of size 32768 at location 1
+Replayed transaction of size 32768 at location 15
+../tests/progs/crcsum after e2undo 3905249805

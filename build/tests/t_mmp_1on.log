@@ -1,0 +1,10 @@
+tune2fs 1.43-WIP (29-Mar-2015)
+Multiple mount protection has been enabled with update interval 5s.
+Setting multiple mount protection update interval to 1 second
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+./tmp-t_mmp_1on.527cQX: 11/64 files (0.0% non-contiguous), 13/100 blocks

@@ -1,0 +1,229 @@
+ext4 with bigalloc starting
+0+0 records in
+0+0 records out
+0 bytes (0 B) copied, 2.2322e-05 s, 0.0 kB/s
+using /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+../misc/mke2fs -t ext4 -O bigalloc -qF /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 512M
+../tests/progs/crcsum /tmp/csum-tmp.mP4oAD
+Checksum is 2332375291
+Setting up file system
+debugfs 1.43-WIP (29-Mar-2015)
+debugfs:  mkdir test
+debugfs:  cd test
+debugfs:  write /tmp/csum-tmp.mP4oAD e2fsck
+Allocated inode: 13
+debugfs:  ls /test
+ 12  (12) .    2  (12) ..    13  (4072) e2fsck   
+debugfs:  stat /test/e2fsck
+Inode: 13   Type: regular    Mode:  0600   Flags: 0x80000
+Generation: 0    Version: 0x00000000:00000000
+User:     0   Group:     0   Size: 2722733
+File ACL: 0    Directory ACL: 0
+Links: 1   Blockcount: 5376
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x55263e90:00000000 -- Thu Apr  9 08:55:44 2015
+ atime: 0x55263e90:00000000 -- Thu Apr  9 08:55:44 2015
+ mtime: 0x55263e90:00000000 -- Thu Apr  9 08:55:44 2015
+crtime: 0x55263e90:00000000 -- Thu Apr  9 08:55:44 2015
+Size of extra inode fields: 28
+EXTENTS:
+(0-664):4720-5384
+debugfs:  quit
+ 
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4: 13/8192 files (0.0% non-contiguous), 5392/131072 blocks
+../resize/resize2fs -f -d 63 /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 2T
+resize2fs 1.43-WIP (29-Mar-2015)
+fs has 13 inodes, 1 groups required.
+fs requires 4875 data blocks.
+With 1 group(s), we have 523771 blocks available.
+Last group's overhead is 517
+Need 4875 data blocks in last group
+Final size of last group is 5392
+Estimated blocks needed: 5424
+Extents safety margin: 15
+Resizing the filesystem on /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 to 536870912 (4k) blocks.
+read_bitmaps: Memory used: 132k/0k (45k/88k), time:  0.00/ 0.00/ 0.00
+read_bitmaps: I/O read: 1MB, write: 0MB, rate: 52631.58MB/s
+fix_uninit_block_bitmaps 1: Memory used: 132k/0k (45k/88k), time:  0.00/ 0.00/ 0.00
+resize_group_descriptors: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+move_bg_metadata: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+zero_high_bits_in_metadata: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+adjust_superblock: Memory used: 132k/0k (87k/46k), time:  0.00/ 0.00/ 0.00
+fix_uninit_block_bitmaps 2: Memory used: 132k/0k (87k/46k), time:  0.01/ 0.01/ 0.00
+blocks_to_move: Memory used: 132k/0k (87k/46k), time:  0.00/ 0.00/ 0.00
+Number of free blocks: 125680/535811573, Needed: 1
+Moving 16 blocks 560->13552
+block_mover: Memory used: 132k/2052k (94k/39k), time:  0.00/ 0.00/ 0.00
+block_mover: I/O read: 1MB, write: 1MB, rate: 526.04MB/s
+ino=2, blockcnt=0, 560->13552
+inode_scan_and_fix: Memory used: 268k/2052k (93k/176k), time:  0.00/ 0.00/ 0.00
+inode_scan_and_fix: I/O read: 1MB, write: 1MB, rate: 1560.06MB/s
+inode_ref_fix: Memory used: 268k/2052k (93k/176k), time:  0.00/ 0.00/ 0.00
+move_itables: Memory used: 268k/2052k (93k/176k), time:  0.00/ 0.00/ 0.00
+calculate_summary_stats: Memory used: 268k/2052k (93k/176k), time:  0.40/ 0.39/ 0.00
+fix_resize_inode: Memory used: 268k/2052k (99k/170k), time:  0.00/ 0.00/ 0.00
+fix_sb_journal_backup: Memory used: 268k/2052k (99k/170k), time:  0.00/ 0.00/ 0.00
+overall resize2fs: Memory used: 268k/2052k (99k/170k), time:  0.41/ 0.40/ 0.00
+overall resize2fs: I/O read: 1MB, write: 1MB, rate: 2.43MB/s
+The filesystem on /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 is now 536870912 (4k) blocks long.
+
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4: 13/8388608 files (0.0% non-contiguous), 562144/536870912 blocks
+../debugfs/debugfs -R dump /test/e2fsck /tmp/csum-tmp.mP4oAD /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+debugfs 1.43-WIP (29-Mar-2015)
+../tests/progs/crcsum /tmp/csum-tmp.mP4oAD
+Checksum is 2332375291
+../resize/resize2fs -f -d 63 -M /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 2T
+resize2fs 1.43-WIP (29-Mar-2015)
+fs has 13 inodes, 1 groups required.
+fs requires 35673 data blocks.
+With 1 group(s), we have 516010 blocks available.
+Last group's overhead is 8278
+Need 35673 data blocks in last group
+Final size of last group is 43951
+Estimated blocks needed: 43983
+Extents safety margin: 105
+Resizing the filesystem on /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 to 44088 (4k) blocks.
+read_bitmaps: Memory used: 132k/0k (76k/57k), time:  0.01/ 0.00/ 0.00
+read_bitmaps: I/O read: 1MB, write: 0MB, rate: 190.48MB/s
+fix_uninit_block_bitmaps 1: Memory used: 132k/0k (76k/57k), time:  0.01/ 0.00/ 0.00
+resize_group_descriptors: Memory used: 132k/0k (115k/18k), time:  0.00/ 0.00/ 0.00
+move_bg_metadata: Memory used: 132k/0k (115k/18k), time:  0.00/ 0.00/ 0.00
+zero_high_bits_in_metadata: Memory used: 132k/0k (115k/18k), time:  0.00/ 0.00/ 0.00
+adjust_superblock: Memory used: 132k/0k (84k/49k), time:  0.00/ 0.00/ 0.00
+fix_uninit_block_bitmaps 2: Memory used: 132k/0k (84k/49k), time:  0.00/ 0.00/ 0.00
+blocks_to_move: Memory used: 132k/0k (87k/46k), time:  0.84/ 0.81/ 0.00
+Number of free blocks: 536308768/4294572600, Needed: 0
+block_mover: Memory used: 132k/2052k (93k/40k), time:  0.17/ 0.16/ 0.00
+block_mover: I/O read: 1MB, write: 0MB, rate: 6.03MB/s
+inode_scan_and_fix: Memory used: 224k/2052k (93k/132k), time:  0.00/ 0.00/ 0.00
+inode_ref_fix: Memory used: 224k/2052k (93k/132k), time:  0.00/ 0.00/ 0.00
+move_itables: Memory used: 224k/2052k (93k/132k), time:  0.00/ 0.00/ 0.00
+calculate_summary_stats: Memory used: 224k/2052k (93k/132k), time:  0.00/ 0.00/ 0.00
+fix_resize_inode: Memory used: 224k/2052k (98k/127k), time:  0.00/ 0.00/ 0.00
+fix_resize_inode: I/O read: 1MB, write: 1MB, rate: 27777.78MB/s
+fix_sb_journal_backup: Memory used: 224k/2052k (98k/127k), time:  0.00/ 0.00/ 0.00
+overall resize2fs: Memory used: 224k/2052k (98k/127k), time:  1.03/ 0.99/ 0.00
+overall resize2fs: I/O read: 1MB, write: 1MB, rate: 0.98MB/s
+The filesystem on /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 is now 44088 (4k) blocks long.
+
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4: 13/8192 files (0.0% non-contiguous), 5400/44088 blocks
+../debugfs/debugfs -R dump /test/e2fsck /tmp/csum-tmp.mP4oAD /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+debugfs 1.43-WIP (29-Mar-2015)
+../tests/progs/crcsum /tmp/csum-tmp.mP4oAD
+Checksum is 2332375291
+../resize/resize2fs -f -d 63 -M /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 2T
+resize2fs 1.43-WIP (29-Mar-2015)
+fs has 13 inodes, 1 groups required.
+fs requires 4877 data blocks.
+With 1 group(s), we have 523765 blocks available.
+Last group's overhead is 523
+Need 4877 data blocks in last group
+Final size of last group is 5400
+Estimated blocks needed: 5432
+Extents safety margin: 15
+Resizing the filesystem on /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 to 5447 (4k) blocks.
+read_bitmaps: Memory used: 132k/0k (45k/88k), time:  0.00/ 0.00/ 0.00
+read_bitmaps: I/O read: 1MB, write: 0MB, rate: 41666.67MB/s
+fix_uninit_block_bitmaps 1: Memory used: 132k/0k (45k/88k), time:  0.00/ 0.00/ 0.00
+resize_group_descriptors: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+move_bg_metadata: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+zero_high_bits_in_metadata: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+adjust_superblock: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+fix_uninit_block_bitmaps 2: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+blocks_to_move: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+Number of free blocks: 38688/47, Needed: 16
+Moving 16 blocks 13552->5392
+block_mover: Memory used: 132k/2052k (59k/74k), time:  0.00/ 0.00/ 0.00
+block_mover: I/O read: 1MB, write: 1MB, rate: 226.65MB/s
+ino=2, blockcnt=0, 13552->5392
+inode_scan_and_fix: Memory used: 132k/2052k (58k/75k), time:  0.05/ 0.00/ 0.00
+inode_scan_and_fix: I/O read: 1MB, write: 1MB, rate: 21.87MB/s
+inode_ref_fix: Memory used: 132k/2052k (58k/75k), time:  0.00/ 0.00/ 0.00
+move_itables: Memory used: 132k/2052k (58k/75k), time:  0.00/ 0.00/ 0.00
+calculate_summary_stats: Memory used: 132k/2052k (58k/75k), time:  0.00/ 0.00/ 0.00
+fix_resize_inode: Memory used: 132k/2052k (63k/70k), time:  0.00/ 0.00/ 0.00
+fix_resize_inode: I/O read: 1MB, write: 1MB, rate: 17543.86MB/s
+fix_sb_journal_backup: Memory used: 132k/2052k (63k/70k), time:  0.00/ 0.00/ 0.00
+overall resize2fs: Memory used: 132k/2052k (63k/70k), time:  0.09/ 0.00/ 0.00
+overall resize2fs: I/O read: 1MB, write: 1MB, rate: 10.56MB/s
+The filesystem on /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 is now 5447 (4k) blocks long.
+
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4: 13/8192 files (0.0% non-contiguous), 5399/5447 blocks
+../debugfs/debugfs -R dump /test/e2fsck /tmp/csum-tmp.mP4oAD /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+debugfs 1.43-WIP (29-Mar-2015)
+../tests/progs/crcsum /tmp/csum-tmp.mP4oAD
+Checksum is 2332375291
+../resize/resize2fs -f -d 63 -M /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 2T
+resize2fs 1.43-WIP (29-Mar-2015)
+fs has 13 inodes, 1 groups required.
+fs requires 4876 data blocks.
+With 1 group(s), we have 523765 blocks available.
+Last group's overhead is 523
+Need 4876 data blocks in last group
+Final size of last group is 5399
+Estimated blocks needed: 5431
+Extents safety margin: 0
+Resizing the filesystem on /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 to 5431 (4k) blocks.
+read_bitmaps: Memory used: 132k/0k (45k/88k), time:  0.00/ 0.00/ 0.00
+read_bitmaps: I/O read: 1MB, write: 0MB, rate: 55555.55MB/s
+fix_uninit_block_bitmaps 1: Memory used: 132k/0k (45k/88k), time:  0.00/ 0.00/ 0.00
+resize_group_descriptors: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+move_bg_metadata: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+zero_high_bits_in_metadata: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+adjust_superblock: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+fix_uninit_block_bitmaps 2: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+blocks_to_move: Memory used: 132k/0k (52k/81k), time:  0.00/ 0.00/ 0.00
+Number of free blocks: 48/32, Needed: 0
+block_mover: Memory used: 132k/2052k (57k/76k), time:  0.00/ 0.00/ 0.00
+block_mover: I/O read: 1MB, write: 0MB, rate: 11235.95MB/s
+inode_scan_and_fix: Memory used: 132k/2052k (57k/76k), time:  0.00/ 0.00/ 0.00
+inode_ref_fix: Memory used: 132k/2052k (57k/76k), time:  0.00/ 0.00/ 0.00
+move_itables: Memory used: 132k/2052k (57k/76k), time:  0.00/ 0.00/ 0.00
+calculate_summary_stats: Memory used: 132k/2052k (57k/76k), time:  0.00/ 0.00/ 0.00
+fix_resize_inode: Memory used: 132k/2052k (63k/70k), time:  0.00/ 0.00/ 0.00
+fix_resize_inode: I/O read: 1MB, write: 1MB, rate: 8196.72MB/s
+fix_sb_journal_backup: Memory used: 132k/2052k (63k/70k), time:  0.00/ 0.00/ 0.00
+overall resize2fs: Memory used: 132k/2052k (63k/70k), time:  0.03/ 0.00/ 0.00
+overall resize2fs: I/O read: 1MB, write: 1MB, rate: 33.06MB/s
+The filesystem on /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4 is now 5431 (4k) blocks long.
+
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4: 13/8192 files (0.0% non-contiguous), 5399/5431 blocks
+../debugfs/debugfs -R dump /test/e2fsck /tmp/csum-tmp.mP4oAD /tmp/e2fsprogs-tmp-r_bigalloc_big_expand.bg9Ac4
+debugfs 1.43-WIP (29-Mar-2015)
+../tests/progs/crcsum /tmp/csum-tmp.mP4oAD
+Checksum is 2332375291

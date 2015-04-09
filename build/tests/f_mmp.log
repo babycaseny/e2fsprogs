@@ -1,0 +1,37 @@
+make the test image ...
+set mmp sequence to EXT2_MMP_SEQ_FSCK...
+wait until debugfs has started ...
+debugfs 1.43-WIP (29-Mar-2015)
+debugfs:  dump_mmp
+block_number: 12
+update_interval: 1
+check_interval: 5
+sequence: e24d4d50
+time: 1428569800 -- Thu Apr  9 08:56:40 2015
+node_name: bktkowks04
+device_name: ./tmp-f_mmp.EL2jA6
+magic: 0x4d4d50
+checksum: 0x00000000
+debugfs:  dump_inode <2> f_mmp.new
+debugfs:  kill debugfs abruptly (simulates e2fsck failure) ...
+e2fsck (should fail mmp_seq = EXT2_MMP_SEQ_FSCK) ...
+e2fsck 1.43-WIP (29-Mar-2015)
+../e2fsck/e2fsck: MMP: fsck being run while checking MMP block
+MMP check failed: If you are sure the filesystem is not in use on any node, run:
+'tune2fs -f -E clear_mmp {device}'
+
+MMP error info: last update: Thu Apr  9 08:56:40 2015
+ node: bktkowks04 device: ./tmp-f_mmp.EL2jA6
+
+./tmp-f_mmp.EL2jA6: ********** WARNING: Filesystem still has errors **********
+
+clear mmp_seq with tune2fs ...
+tune2fs 1.43-WIP (29-Mar-2015)
+run e2fsck again (should pass with clean mmp_seq) ...
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+./tmp-f_mmp.EL2jA6: 11/64 files (0.0% non-contiguous), 13/100 blocks

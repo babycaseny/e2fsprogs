@@ -1,0 +1,41 @@
+mke2fs -q -F -o Linux -b 1024 /tmp/e2fsprogs-tmp-u_tune2fs.71T1Wj
+../tests/progs/crcsum before tune2fs 81884675
+using tune2fs to test e2undo
+tune2fs 1.43-WIP (29-Mar-2015)
+To undo the tune2fs operation please run the command
+    e2undo /tmp/tune2fs-e2fsprogs-tmp-u_tune2fs.71T1Wj.e2undo /tmp/e2fsprogs-tmp-u_tune2fs.71T1Wj
+
+Setting inode size 256
+../tests/progs/crcsum after tune2fs 3378272382
+Replayed transaction of size 1024 at location 33
+Replayed transaction of size 1024 at location 7
+Replayed transaction of size 1024 at location 14
+Replayed transaction of size 1024 at location 21
+Replayed transaction of size 1024 at location 28
+Replayed transaction of size 1024 at location 2
+Replayed transaction of size 1024 at location 35
+Replayed transaction of size 1024 at location 9
+Replayed transaction of size 1024 at location 16
+Replayed transaction of size 1024 at location 30
+Replayed transaction of size 1024 at location 4
+Replayed transaction of size 1024 at location 11
+Replayed transaction of size 1024 at location 18
+Replayed transaction of size 1024 at location 32
+Replayed transaction of size 1024 at location 6
+Replayed transaction of size 1024 at location 13
+Replayed transaction of size 1024 at location 20
+Replayed transaction of size 1024 at location 34
+Replayed transaction of size 1024 at location 1
+Replayed transaction of size 1024 at location 8
+Replayed transaction of size 1024 at location 15
+Replayed transaction of size 1024 at location 22
+Replayed transaction of size 1024 at location 29
+Replayed transaction of size 1024 at location 3
+Replayed transaction of size 1024 at location 36
+Replayed transaction of size 1024 at location 10
+Replayed transaction of size 1024 at location 17
+Replayed transaction of size 1024 at location 31
+Replayed transaction of size 1024 at location 5
+Replayed transaction of size 1024 at location 12
+Replayed transaction of size 1024 at location 19
+../tests/progs/crcsum after e2undo 81884675

@@ -1,0 +1,530 @@
+ext2 1024 blocksize with small block groups starting
+0+0 records in
+0+0 records out
+0 bytes (0 B) copied, 1.753e-05 s, 0.0 kB/s
+using /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+../misc/mke2fs -t ext2 -O ^resize_inode -b 1024 -g 1024 -qF /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 64M
+../tests/progs/crcsum /tmp/csum-tmp.CgSNuV
+Checksum is 1337984751
+Setting up file system
+debugfs 1.43-WIP (29-Mar-2015)
+debugfs:  mkdir test
+debugfs:  cd test
+debugfs:  write /tmp/csum-tmp.CgSNuV e2fsck
+Allocated inode: 13
+debugfs:  ls /test
+ 12  (12) .    2  (12) ..    13  (1000) e2fsck   
+debugfs:  stat /test/e2fsck
+Inode: 13   Type: regular    Mode:  0600   Flags: 0x0
+Generation: 0    Version: 0x00000000
+User:     0   Group:     0   Size: 2722733
+File ACL: 0    Directory ACL: 0
+Links: 1   Blockcount: 5342
+Fragment:  Address: 0    Number: 0    Size: 0
+ctime: 0x55263e85 -- Thu Apr  9 08:55:33 2015
+atime: 0x55263e85 -- Thu Apr  9 08:55:33 2015
+mtime: 0x55263e85 -- Thu Apr  9 08:55:33 2015
+BLOCKS:
+(0-11):52-63, (IND):64, (12-267):65-320, (DIND):321, (IND):322, (268-523):323-578, (IND):579, (524-779):580-835, (IND):836, (780-967):837-1024, (968-1035):1062-1129, (IND):1130, (1036-1291):1131-1386, (IND):1387, (1292-1547):1388-1643, (IND):1644, (1548-1803):1645-1900, (IND):1901, (1804-1950):1902-2048, (1951-2059):2083-2191, (IND):2192, (2060-2315):2193-2448, (IND):2449, (2316-2571):2450-2705, (IND):2706, (2572-2658):2707-2793
+TOTAL: 2671
+
+debugfs:  quit
+ 
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3: 13/16384 files (0.0% non-contiguous), 4889/65536 blocks
+../resize/resize2fs -d 63 /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 2G
+resize2fs 1.43-WIP (29-Mar-2015)
+fs has 13 inodes, 1 groups required.
+fs requires 2686 data blocks.
+With 1 group(s), we have 987 blocks available.
+Added 2 extra group(s), blks_needed 2686, data_blocks 2964, last_start 1974
+Last group's overhead is 34
+Need 712 data blocks in last group
+Final size of last group is 747
+Estimated blocks needed: 2795
+Resizing the filesystem on /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 to 2097152 (1k) blocks.
+read_bitmaps: Memory used: 132k/0k (21k/112k), time:  0.00/ 0.00/ 0.00
+read_bitmaps: I/O read: 1MB, write: 0MB, rate: 12820.51MB/s
+fix_uninit_block_bitmaps 1: Memory used: 132k/0k (21k/112k), time:  0.00/ 0.00/ 0.00
+resize_group_descriptors: Memory used: 132k/0k (29k/104k), time:  0.00/ 0.00/ 0.00
+move_bg_metadata: Memory used: 132k/0k (29k/104k), time:  0.00/ 0.00/ 0.00
+zero_high_bits_in_metadata: Memory used: 132k/0k (29k/104k), time:  0.00/ 0.00/ 0.00
+adjust_superblock: Memory used: 396k/0k (313k/84k), time:  2.48/ 0.00/ 0.07
+fix_uninit_block_bitmaps 2: Memory used: 396k/0k (313k/84k), time:  0.00/ 0.00/ 0.00
+blocks_to_move: Memory used: 396k/0k (313k/84k), time:  0.00/ 0.00/ 0.00
+Number of free blocks: 60647/2023136, Needed: 396
+Moving 62 blocks 38->2794
+Moving 62 blocks 1062->2856
+block_mover: Memory used: 396k/0k (316k/81k), time:  0.00/ 0.00/ 0.00
+block_mover: I/O read: 1MB, write: 1MB, rate: 204.79MB/s
+ino=2, blockcnt=0, 38->2794
+ino=11, blockcnt=0, 39->2795
+ino=11, blockcnt=1, 40->2796
+ino=11, blockcnt=2, 41->2797
+ino=11, blockcnt=3, 42->2798
+ino=11, blockcnt=4, 43->2799
+ino=11, blockcnt=5, 44->2800
+ino=11, blockcnt=6, 45->2801
+ino=11, blockcnt=7, 46->2802
+ino=11, blockcnt=8, 47->2803
+ino=11, blockcnt=9, 48->2804
+ino=11, blockcnt=10, 49->2805
+ino=11, blockcnt=11, 50->2806
+ino=12, blockcnt=0, 51->2807
+ino=13, blockcnt=0, 52->2808
+ino=13, blockcnt=1, 53->2809
+ino=13, blockcnt=2, 54->2810
+ino=13, blockcnt=3, 55->2811
+ino=13, blockcnt=4, 56->2812
+ino=13, blockcnt=5, 57->2813
+ino=13, blockcnt=6, 58->2814
+ino=13, blockcnt=7, 59->2815
+ino=13, blockcnt=8, 60->2816
+ino=13, blockcnt=9, 61->2817
+ino=13, blockcnt=10, 62->2818
+ino=13, blockcnt=11, 63->2819
+ino=13, blockcnt=-1, 64->2820
+ino=13, blockcnt=12, 65->2821
+ino=13, blockcnt=13, 66->2822
+ino=13, blockcnt=14, 67->2823
+ino=13, blockcnt=15, 68->2824
+ino=13, blockcnt=16, 69->2825
+ino=13, blockcnt=17, 70->2826
+ino=13, blockcnt=18, 71->2827
+ino=13, blockcnt=19, 72->2828
+ino=13, blockcnt=20, 73->2829
+ino=13, blockcnt=21, 74->2830
+ino=13, blockcnt=22, 75->2831
+ino=13, blockcnt=23, 76->2832
+ino=13, blockcnt=24, 77->2833
+ino=13, blockcnt=25, 78->2834
+ino=13, blockcnt=26, 79->2835
+ino=13, blockcnt=27, 80->2836
+ino=13, blockcnt=28, 81->2837
+ino=13, blockcnt=29, 82->2838
+ino=13, blockcnt=30, 83->2839
+ino=13, blockcnt=31, 84->2840
+ino=13, blockcnt=32, 85->2841
+ino=13, blockcnt=33, 86->2842
+ino=13, blockcnt=34, 87->2843
+ino=13, blockcnt=35, 88->2844
+ino=13, blockcnt=36, 89->2845
+ino=13, blockcnt=37, 90->2846
+ino=13, blockcnt=38, 91->2847
+ino=13, blockcnt=39, 92->2848
+ino=13, blockcnt=40, 93->2849
+ino=13, blockcnt=41, 94->2850
+ino=13, blockcnt=42, 95->2851
+ino=13, blockcnt=43, 96->2852
+ino=13, blockcnt=44, 97->2853
+ino=13, blockcnt=45, 98->2854
+ino=13, blockcnt=46, 99->2855
+ino=13, blockcnt=968, 1062->2856
+ino=13, blockcnt=969, 1063->2857
+ino=13, blockcnt=970, 1064->2858
+ino=13, blockcnt=971, 1065->2859
+ino=13, blockcnt=972, 1066->2860
+ino=13, blockcnt=973, 1067->2861
+ino=13, blockcnt=974, 1068->2862
+ino=13, blockcnt=975, 1069->2863
+ino=13, blockcnt=976, 1070->2864
+ino=13, blockcnt=977, 1071->2865
+ino=13, blockcnt=978, 1072->2866
+ino=13, blockcnt=979, 1073->2867
+ino=13, blockcnt=980, 1074->2868
+ino=13, blockcnt=981, 1075->2869
+ino=13, blockcnt=982, 1076->2870
+ino=13, blockcnt=983, 1077->2871
+ino=13, blockcnt=984, 1078->2872
+ino=13, blockcnt=985, 1079->2873
+ino=13, blockcnt=986, 1080->2874
+ino=13, blockcnt=987, 1081->2875
+ino=13, blockcnt=988, 1082->2876
+ino=13, blockcnt=989, 1083->2877
+ino=13, blockcnt=990, 1084->2878
+ino=13, blockcnt=991, 1085->2879
+ino=13, blockcnt=992, 1086->2880
+ino=13, blockcnt=993, 1087->2881
+ino=13, blockcnt=994, 1088->2882
+ino=13, blockcnt=995, 1089->2883
+ino=13, blockcnt=996, 1090->2884
+ino=13, blockcnt=997, 1091->2885
+ino=13, blockcnt=998, 1092->2886
+ino=13, blockcnt=999, 1093->2887
+ino=13, blockcnt=1000, 1094->2888
+ino=13, blockcnt=1001, 1095->2889
+ino=13, blockcnt=1002, 1096->2890
+ino=13, blockcnt=1003, 1097->2891
+ino=13, blockcnt=1004, 1098->2892
+ino=13, blockcnt=1005, 1099->2893
+ino=13, blockcnt=1006, 1100->2894
+ino=13, blockcnt=1007, 1101->2895
+ino=13, blockcnt=1008, 1102->2896
+ino=13, blockcnt=1009, 1103->2897
+ino=13, blockcnt=1010, 1104->2898
+ino=13, blockcnt=1011, 1105->2899
+ino=13, blockcnt=1012, 1106->2900
+ino=13, blockcnt=1013, 1107->2901
+ino=13, blockcnt=1014, 1108->2902
+ino=13, blockcnt=1015, 1109->2903
+ino=13, blockcnt=1016, 1110->2904
+ino=13, blockcnt=1017, 1111->2905
+ino=13, blockcnt=1018, 1112->2906
+ino=13, blockcnt=1019, 1113->2907
+ino=13, blockcnt=1020, 1114->2908
+ino=13, blockcnt=1021, 1115->2909
+ino=13, blockcnt=1022, 1116->2910
+ino=13, blockcnt=1023, 1117->2911
+ino=13, blockcnt=1024, 1118->2912
+ino=13, blockcnt=1025, 1119->2913
+ino=13, blockcnt=1026, 1120->2914
+ino=13, blockcnt=1027, 1121->2915
+ino=13, blockcnt=1028, 1122->2916
+ino=13, blockcnt=1029, 1123->2917
+inode_scan_and_fix: Memory used: 396k/0k (315k/82k), time:  0.00/ 0.00/ 0.00
+inode_scan_and_fix: I/O read: 3MB, write: 1MB, rate: 1058.57MB/s
+inode_ref_fix: Memory used: 396k/0k (315k/82k), time:  0.00/ 0.00/ 0.00
+Itable move group 0 block 6->68 (diff 62)
+30 blocks of zeros...
+Itable move group 1 block 1030->1092 (diff 62)
+32 blocks of zeros...
+Itable move group 2 block 2051->2051 (diff 0)
+Itable move group 3 block 3078->3140 (diff 62)
+32 blocks of zeros...
+Itable move group 4 block 4099->4099 (diff 0)
+Itable move group 5 block 5126->5188 (diff 62)
+32 blocks of zeros...
+Itable move group 6 block 6147->6147 (diff 0)
+Itable move group 7 block 7174->7236 (diff 62)
+32 blocks of zeros...
+Itable move group 8 block 8195->8195 (diff 0)
+Itable move group 9 block 9222->9284 (diff 62)
+32 blocks of zeros...
+Itable move group 10 block 10243->10243 (diff 0)
+Itable move group 11 block 11267->11267 (diff 0)
+Itable move group 12 block 12291->12291 (diff 0)
+Itable move group 13 block 13315->13315 (diff 0)
+Itable move group 14 block 14339->14339 (diff 0)
+Itable move group 15 block 15363->15363 (diff 0)
+Itable move group 16 block 16387->16387 (diff 0)
+Itable move group 17 block 17411->17411 (diff 0)
+Itable move group 18 block 18435->18435 (diff 0)
+Itable move group 19 block 19459->19459 (diff 0)
+Itable move group 20 block 20483->20483 (diff 0)
+Itable move group 21 block 21507->21507 (diff 0)
+Itable move group 22 block 22531->22531 (diff 0)
+Itable move group 23 block 23555->23555 (diff 0)
+Itable move group 24 block 24579->24579 (diff 0)
+Itable move group 25 block 25606->25668 (diff 62)
+32 blocks of zeros...
+Itable move group 26 block 26627->26627 (diff 0)
+Itable move group 27 block 27654->27716 (diff 62)
+32 blocks of zeros...
+Itable move group 28 block 28675->28675 (diff 0)
+Itable move group 29 block 29699->29699 (diff 0)
+Itable move group 30 block 30723->30723 (diff 0)
+Itable move group 31 block 31747->31747 (diff 0)
+Itable move group 32 block 32771->32771 (diff 0)
+Itable move group 33 block 33795->33795 (diff 0)
+Itable move group 34 block 34819->34819 (diff 0)
+Itable move group 35 block 35843->35843 (diff 0)
+Itable move group 36 block 36867->36867 (diff 0)
+Itable move group 37 block 37891->37891 (diff 0)
+Itable move group 38 block 38915->38915 (diff 0)
+Itable move group 39 block 39939->39939 (diff 0)
+Itable move group 40 block 40963->40963 (diff 0)
+Itable move group 41 block 41987->41987 (diff 0)
+Itable move group 42 block 43011->43011 (diff 0)
+Itable move group 43 block 44035->44035 (diff 0)
+Itable move group 44 block 45059->45059 (diff 0)
+Itable move group 45 block 46083->46083 (diff 0)
+Itable move group 46 block 47107->47107 (diff 0)
+Itable move group 47 block 48131->48131 (diff 0)
+Itable move group 48 block 49155->49155 (diff 0)
+Itable move group 49 block 50182->50244 (diff 62)
+32 blocks of zeros...
+Itable move group 50 block 51203->51203 (diff 0)
+Itable move group 51 block 52227->52227 (diff 0)
+Itable move group 52 block 53251->53251 (diff 0)
+Itable move group 53 block 54275->54275 (diff 0)
+Itable move group 54 block 55299->55299 (diff 0)
+Itable move group 55 block 56323->56323 (diff 0)
+Itable move group 56 block 57347->57347 (diff 0)
+Itable move group 57 block 58371->58371 (diff 0)
+Itable move group 58 block 59395->59395 (diff 0)
+Itable move group 59 block 60419->60419 (diff 0)
+Itable move group 60 block 61443->61443 (diff 0)
+Itable move group 61 block 62467->62467 (diff 0)
+Itable move group 62 block 63491->63491 (diff 0)
+Itable move group 63 block 64515->64515 (diff 0)
+Inode table move finished.
+move_itables: Memory used: 396k/0k (315k/82k), time:  6.06/ 0.01/ 0.06
+move_itables: I/O read: 1MB, write: 5MB, rate: 0.82MB/s
+calculate_summary_stats: Memory used: 396k/0k (315k/82k), time:  0.02/ 0.04/ 0.00
+fix_resize_inode: Memory used: 396k/0k (315k/82k), time:  0.00/ 0.00/ 0.00
+fix_sb_journal_backup: Memory used: 396k/0k (315k/82k), time:  0.00/ 0.00/ 0.00
+overall resize2fs: Memory used: 396k/0k (315k/82k), time:  8.58/ 0.04/ 0.14
+overall resize2fs: I/O read: 3MB, write: 5MB, rate: 0.93MB/s
+The filesystem on /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 is now 2097152 (1k) blocks long.
+
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3: 13/524288 files (0.0% non-contiguous), 73293/2097152 blocks
+../debugfs/debugfs -R dump /test/e2fsck /tmp/csum-tmp.CgSNuV /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+debugfs 1.43-WIP (29-Mar-2015)
+../tests/progs/crcsum /tmp/csum-tmp.CgSNuV
+Checksum is 1337984751
+../resize/resize2fs -d 63 -M /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 2G
+resize2fs 1.43-WIP (29-Mar-2015)
+fs has 13 inodes, 1 groups required.
+fs requires 2686 data blocks.
+With 1 group(s), we have 925 blocks available.
+Added 2 extra group(s), blks_needed 2686, data_blocks 2840, last_start 1850
+Last group's overhead is 34
+Need 836 data blocks in last group
+Final size of last group is 871
+Estimated blocks needed: 2919
+Resizing the filesystem on /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 to 2919 (1k) blocks.
+read_bitmaps: Memory used: 264k/0k (176k/89k), time:  0.00/ 0.00/ 0.00
+read_bitmaps: I/O read: 4MB, write: 0MB, rate: 1314.06MB/s
+fix_uninit_block_bitmaps 1: Memory used: 264k/0k (176k/89k), time:  0.00/ 0.00/ 0.00
+resize_group_descriptors: Memory used: 396k/0k (339k/58k), time:  0.00/ 0.00/ 0.00
+move_bg_metadata: Memory used: 396k/0k (339k/58k), time:  0.00/ 0.00/ 0.00
+zero_high_bits_in_metadata: Memory used: 396k/0k (339k/58k), time:  0.00/ 0.00/ 0.00
+adjust_superblock: Memory used: 396k/0k (181k/216k), time:  0.00/ 0.00/ 0.00
+fix_uninit_block_bitmaps 2: Memory used: 396k/0k (181k/216k), time:  0.00/ 0.00/ 0.00
+blocks_to_move: Memory used: 396k/0k (181k/216k), time:  0.04/ 0.04/ 0.00
+Number of free blocks: 2023859/4294897048, Needed: 18446744073709551490
+block_mover: Memory used: 396k/0k (215k/182k), time:  0.01/ 0.01/ 0.00
+block_mover: I/O read: 1MB, write: 0MB, rate: 100.66MB/s
+inode_scan_and_fix: Memory used: 396k/0k (216k/181k), time:  0.27/ 0.01/ 0.03
+inode_scan_and_fix: I/O read: 65MB, write: 0MB, rate: 237.74MB/s
+inode_ref_fix: Memory used: 396k/0k (216k/181k), time:  0.00/ 0.00/ 0.00
+move_itables: Memory used: 396k/0k (216k/181k), time:  0.00/ 0.00/ 0.00
+calculate_summary_stats: Memory used: 396k/0k (216k/181k), time:  0.00/ 0.00/ 0.00
+fix_resize_inode: Memory used: 396k/0k (216k/181k), time:  0.00/ 0.00/ 0.00
+fix_sb_journal_backup: Memory used: 396k/0k (216k/181k), time:  0.00/ 0.00/ 0.00
+overall resize2fs: Memory used: 396k/0k (216k/181k), time:  0.34/ 0.06/ 0.03
+overall resize2fs: I/O read: 69MB, write: 1MB, rate: 205.34MB/s
+The filesystem on /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 is now 2919 (1k) blocks long.
+
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3: 13/768 files (0.0% non-contiguous), 2792/2919 blocks
+../debugfs/debugfs -R dump /test/e2fsck /tmp/csum-tmp.CgSNuV /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+debugfs 1.43-WIP (29-Mar-2015)
+../tests/progs/crcsum /tmp/csum-tmp.CgSNuV
+Checksum is 1337984751
+../resize/resize2fs -d 63 -M /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 2G
+resize2fs 1.43-WIP (29-Mar-2015)
+fs has 13 inodes, 1 groups required.
+fs requires 2686 data blocks.
+With 1 group(s), we have 988 blocks available.
+Added 2 extra group(s), blks_needed 2686, data_blocks 2966, last_start 1976
+Last group's overhead is 34
+Need 710 data blocks in last group
+Final size of last group is 745
+Estimated blocks needed: 2793
+Resizing the filesystem on /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 to 2793 (1k) blocks.
+read_bitmaps: Memory used: 132k/0k (18k/115k), time:  0.00/ 0.00/ 0.00
+read_bitmaps: I/O read: 1MB, write: 0MB, rate: 71428.57MB/s
+fix_uninit_block_bitmaps 1: Memory used: 132k/0k (18k/115k), time:  0.00/ 0.00/ 0.00
+resize_group_descriptors: Memory used: 132k/0k (22k/111k), time:  0.00/ 0.00/ 0.00
+move_bg_metadata: Memory used: 132k/0k (22k/111k), time:  0.00/ 0.00/ 0.00
+zero_high_bits_in_metadata: Memory used: 132k/0k (22k/111k), time:  0.00/ 0.00/ 0.00
+adjust_superblock: Memory used: 132k/0k (22k/111k), time:  0.00/ 0.00/ 0.00
+fix_uninit_block_bitmaps 2: Memory used: 132k/0k (22k/111k), time:  0.00/ 0.00/ 0.00
+blocks_to_move: Memory used: 132k/0k (22k/111k), time:  0.00/ 0.00/ 0.00
+Number of free blocks: 127/1, Needed: 125
+Moving 63 blocks 2793->3
+Moving 62 blocks 2856->1027
+block_mover: Memory used: 132k/0k (57k/76k), time:  0.00/ 0.00/ 0.00
+block_mover: I/O read: 1MB, write: 1MB, rate: 468.16MB/s
+ino=2, blockcnt=0, 2794->4
+ino=11, blockcnt=0, 2795->5
+ino=11, blockcnt=1, 2796->6
+ino=11, blockcnt=2, 2797->7
+ino=11, blockcnt=3, 2798->8
+ino=11, blockcnt=4, 2799->9
+ino=11, blockcnt=5, 2800->10
+ino=11, blockcnt=6, 2801->11
+ino=11, blockcnt=7, 2802->12
+ino=11, blockcnt=8, 2803->13
+ino=11, blockcnt=9, 2804->14
+ino=11, blockcnt=10, 2805->15
+ino=11, blockcnt=11, 2806->16
+ino=12, blockcnt=0, 2807->17
+ino=13, blockcnt=0, 2808->18
+ino=13, blockcnt=1, 2809->19
+ino=13, blockcnt=2, 2810->20
+ino=13, blockcnt=3, 2811->21
+ino=13, blockcnt=4, 2812->22
+ino=13, blockcnt=5, 2813->23
+ino=13, blockcnt=6, 2814->24
+ino=13, blockcnt=7, 2815->25
+ino=13, blockcnt=8, 2816->26
+ino=13, blockcnt=9, 2817->27
+ino=13, blockcnt=10, 2818->28
+ino=13, blockcnt=11, 2819->29
+ino=13, blockcnt=-1, 2820->30
+ino=13, blockcnt=12, 2821->31
+ino=13, blockcnt=13, 2822->32
+ino=13, blockcnt=14, 2823->33
+ino=13, blockcnt=15, 2824->34
+ino=13, blockcnt=16, 2825->35
+ino=13, blockcnt=17, 2826->36
+ino=13, blockcnt=18, 2827->37
+ino=13, blockcnt=19, 2828->38
+ino=13, blockcnt=20, 2829->39
+ino=13, blockcnt=21, 2830->40
+ino=13, blockcnt=22, 2831->41
+ino=13, blockcnt=23, 2832->42
+ino=13, blockcnt=24, 2833->43
+ino=13, blockcnt=25, 2834->44
+ino=13, blockcnt=26, 2835->45
+ino=13, blockcnt=27, 2836->46
+ino=13, blockcnt=28, 2837->47
+ino=13, blockcnt=29, 2838->48
+ino=13, blockcnt=30, 2839->49
+ino=13, blockcnt=31, 2840->50
+ino=13, blockcnt=32, 2841->51
+ino=13, blockcnt=33, 2842->52
+ino=13, blockcnt=34, 2843->53
+ino=13, blockcnt=35, 2844->54
+ino=13, blockcnt=36, 2845->55
+ino=13, blockcnt=37, 2846->56
+ino=13, blockcnt=38, 2847->57
+ino=13, blockcnt=39, 2848->58
+ino=13, blockcnt=40, 2849->59
+ino=13, blockcnt=41, 2850->60
+ino=13, blockcnt=42, 2851->61
+ino=13, blockcnt=43, 2852->62
+ino=13, blockcnt=44, 2853->63
+ino=13, blockcnt=45, 2854->64
+ino=13, blockcnt=46, 2855->65
+ino=13, blockcnt=968, 2856->1027
+ino=13, blockcnt=969, 2857->1028
+ino=13, blockcnt=970, 2858->1029
+ino=13, blockcnt=971, 2859->1030
+ino=13, blockcnt=972, 2860->1031
+ino=13, blockcnt=973, 2861->1032
+ino=13, blockcnt=974, 2862->1033
+ino=13, blockcnt=975, 2863->1034
+ino=13, blockcnt=976, 2864->1035
+ino=13, blockcnt=977, 2865->1036
+ino=13, blockcnt=978, 2866->1037
+ino=13, blockcnt=979, 2867->1038
+ino=13, blockcnt=980, 2868->1039
+ino=13, blockcnt=981, 2869->1040
+ino=13, blockcnt=982, 2870->1041
+ino=13, blockcnt=983, 2871->1042
+ino=13, blockcnt=984, 2872->1043
+ino=13, blockcnt=985, 2873->1044
+ino=13, blockcnt=986, 2874->1045
+ino=13, blockcnt=987, 2875->1046
+ino=13, blockcnt=988, 2876->1047
+ino=13, blockcnt=989, 2877->1048
+ino=13, blockcnt=990, 2878->1049
+ino=13, blockcnt=991, 2879->1050
+ino=13, blockcnt=992, 2880->1051
+ino=13, blockcnt=993, 2881->1052
+ino=13, blockcnt=994, 2882->1053
+ino=13, blockcnt=995, 2883->1054
+ino=13, blockcnt=996, 2884->1055
+ino=13, blockcnt=997, 2885->1056
+ino=13, blockcnt=998, 2886->1057
+ino=13, blockcnt=999, 2887->1058
+ino=13, blockcnt=1000, 2888->1059
+ino=13, blockcnt=1001, 2889->1060
+ino=13, blockcnt=1002, 2890->1061
+ino=13, blockcnt=1003, 2891->1062
+ino=13, blockcnt=1004, 2892->1063
+ino=13, blockcnt=1005, 2893->1064
+ino=13, blockcnt=1006, 2894->1065
+ino=13, blockcnt=1007, 2895->1066
+ino=13, blockcnt=1008, 2896->1067
+ino=13, blockcnt=1009, 2897->1068
+ino=13, blockcnt=1010, 2898->1069
+ino=13, blockcnt=1011, 2899->1070
+ino=13, blockcnt=1012, 2900->1071
+ino=13, blockcnt=1013, 2901->1072
+ino=13, blockcnt=1014, 2902->1073
+ino=13, blockcnt=1015, 2903->1074
+ino=13, blockcnt=1016, 2904->1075
+ino=13, blockcnt=1017, 2905->1076
+ino=13, blockcnt=1018, 2906->1077
+ino=13, blockcnt=1019, 2907->1078
+ino=13, blockcnt=1020, 2908->1079
+ino=13, blockcnt=1021, 2909->1080
+ino=13, blockcnt=1022, 2910->1081
+ino=13, blockcnt=1023, 2911->1082
+ino=13, blockcnt=1024, 2912->1083
+ino=13, blockcnt=1025, 2913->1084
+ino=13, blockcnt=1026, 2914->1085
+ino=13, blockcnt=1027, 2915->1086
+ino=13, blockcnt=1028, 2916->1087
+ino=13, blockcnt=1029, 2917->1088
+ino=13, blockcnt=2658, 2793->3
+inode_scan_and_fix: Memory used: 132k/0k (57k/76k), time:  0.00/ 0.00/ 0.00
+inode_scan_and_fix: I/O read: 1MB, write: 1MB, rate: 643.50MB/s
+inode_ref_fix: Memory used: 132k/0k (57k/76k), time:  0.00/ 0.00/ 0.00
+move_itables: Memory used: 132k/0k (57k/76k), time:  0.00/ 0.00/ 0.00
+calculate_summary_stats: Memory used: 132k/0k (57k/76k), time:  0.00/ 0.00/ 0.00
+fix_resize_inode: Memory used: 132k/0k (57k/76k), time:  0.00/ 0.00/ 0.00
+fix_sb_journal_backup: Memory used: 132k/0k (57k/76k), time:  0.00/ 0.00/ 0.00
+overall resize2fs: Memory used: 132k/0k (57k/76k), time:  0.01/ 0.00/ 0.00
+overall resize2fs: I/O read: 1MB, write: 1MB, rate: 104.24MB/s
+The filesystem on /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 is now 2793 (1k) blocks long.
+
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3: 13/768 files (0.0% non-contiguous), 2792/2793 blocks
+../debugfs/debugfs -R dump /test/e2fsck /tmp/csum-tmp.CgSNuV /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+debugfs 1.43-WIP (29-Mar-2015)
+../tests/progs/crcsum /tmp/csum-tmp.CgSNuV
+Checksum is 1337984751
+../resize/resize2fs -d 63 -M /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3 2G
+resize2fs 1.43-WIP (29-Mar-2015)
+The filesystem is already 2793 (1k) blocks long.  Nothing to do!
+
+fs has 13 inodes, 1 groups required.
+fs requires 2686 data blocks.
+With 1 group(s), we have 988 blocks available.
+Added 2 extra group(s), blks_needed 2686, data_blocks 2966, last_start 1976
+Last group's overhead is 34
+Need 710 data blocks in last group
+Final size of last group is 745
+Estimated blocks needed: 2793
+../e2fsck/e2fsck -fy /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+e2fsck 1.43-WIP (29-Mar-2015)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3: 13/768 files (0.0% non-contiguous), 2792/2793 blocks
+../debugfs/debugfs -R dump /test/e2fsck /tmp/csum-tmp.CgSNuV /tmp/e2fsprogs-tmp-r_1024_small_bg.sH2Of3
+debugfs 1.43-WIP (29-Mar-2015)
+../tests/progs/crcsum /tmp/csum-tmp.CgSNuV
+Checksum is 1337984751

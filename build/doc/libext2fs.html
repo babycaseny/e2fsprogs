@@ -1,0 +1,1881 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>The EXT2FS Library (version 1.42.12)</title>
+
+<meta name="description" content="The EXT2FS Library (version 1.42.12)">
+<meta name="keywords" content="The EXT2FS Library (version 1.42.12)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#Concept-Index" rel="index" title="Concept Index">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="dir.html#Top" rel="up" title="(dir)">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">The EXT2FS Library (version 1.42.12)</h1>
+
+
+
+
+
+
+
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="#Introduction-to-the-EXT2FS-Library" accesskey="n" rel="next">Introduction to the EXT2FS Library</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+<a name="The-EXT2FS-Library"></a>
+<h1 class="top">The EXT2FS Library</h1>
+
+<p>This manual documents the EXT2FS Library, version 1.42.12.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Introduction-to-the-EXT2FS-Library" accesskey="1">Introduction to the EXT2FS Library</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#EXT2FS-Library-Functions" accesskey="2">EXT2FS Library Functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Concept-Index" accesskey="3">Concept Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Function-Index" accesskey="4">Function Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Introduction-to-the-EXT2FS-Library"></a>
+<div class="header">
+<p>
+Next: <a href="#EXT2FS-Library-Functions" accesskey="n" rel="next">EXT2FS Library Functions</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Introduction-to-the-EXT2FS-Library-1"></a>
+<h2 class="chapter">1 Introduction to the EXT2FS Library</h2>
+
+<p>The EXT2FS library is designed to allow user-level programs to
+manipulate an ext2 filesystem.
+</p>
+<hr>
+<a name="EXT2FS-Library-Functions"></a>
+<div class="header">
+<p>
+Next: <a href="#Concept-Index" accesskey="n" rel="next">Concept Index</a>, Previous: <a href="#Introduction-to-the-EXT2FS-Library" accesskey="p" rel="prev">Introduction to the EXT2FS Library</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="EXT2FS-Library-Functions-1"></a>
+<h2 class="chapter">2 EXT2FS Library Functions</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Filesystem_002dlevel-functions" accesskey="1">Filesystem-level functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#File-I_002fO-Functions" accesskey="2">File I/O Functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Inode-Functions" accesskey="3">Inode Functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Directory-functions" accesskey="4">Directory functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bitmap-Functions" accesskey="5">Bitmap Functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#EXT2-data-abstractions" accesskey="6">EXT2 data abstractions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Byte_002dswapping-functions" accesskey="7">Byte-swapping functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-functions" accesskey="8">Other functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Filesystem_002dlevel-functions"></a>
+<div class="header">
+<p>
+Next: <a href="#File-I_002fO-Functions" accesskey="n" rel="next">File I/O Functions</a>, Previous: <a href="#EXT2FS-Library-Functions" accesskey="p" rel="prev">EXT2FS Library Functions</a>, Up: <a href="#EXT2FS-Library-Functions" accesskey="u" rel="up">EXT2FS Library Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Filesystem_002dlevel-functions-1"></a>
+<h3 class="section">2.1 Filesystem-level functions</h3>
+
+<p>The following functions operate on a filesystem handle.  Most EXT2FS
+Library functions require a filesystem handle as their first argument.
+There are two functions which create a filesystem handle,
+<code>ext2fs_open</code> and <code>ext2fs_initialize</code>.  
+</p>
+<p>The filesystem can also be closed using <code>ext2fs_close</code>, and any
+changes to the superblock and group descripts can be written out to disk
+using <code>ext2fs_flush</code>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Opening-an-ext2-filesystem" accesskey="1">Opening an ext2 filesystem</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Closing-and-flushing-out-changes" accesskey="2">Closing and flushing out changes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Initializing-a-filesystem" accesskey="3">Initializing a filesystem</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Filesystem-flag-functions" accesskey="4">Filesystem flag functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Opening-an-ext2-filesystem"></a>
+<div class="header">
+<p>
+Next: <a href="#Closing-and-flushing-out-changes" accesskey="n" rel="next">Closing and flushing out changes</a>, Previous: <a href="#Filesystem_002dlevel-functions" accesskey="p" rel="prev">Filesystem-level functions</a>, Up: <a href="#Filesystem_002dlevel-functions" accesskey="u" rel="up">Filesystem-level functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Opening-an-ext2-filesystem-1"></a>
+<h4 class="subsection">2.1.1 Opening an ext2 filesystem</h4>
+
+<p>Most libext2fs functions take a filesystem handle of type
+<code>ext2_filsys</code>.  A filesystem handle is created either by opening
+an existing function using <code>ext2fs_open</code>, or by initializing a new
+filesystem using <code>ext2fs_initialize</code>.
+</p>
+<dl>
+<dt><a name="index-ext2fs_005fopen"></a>Function: <em>errcode_t</em> <strong>ext2fs_open</strong> <em>(const char *<var>name</var>, int <var>flags</var>, int <var>superblock</var>, int <var>block_size</var>, io_manager <var>manager</var>, ext2_filsys *<var>ret_fs</var>)</em></dt>
+<dd>
+<p>Opens a filesystem named <var>name</var>, using the the io_manager
+<var>manager</var> to define the input/output routines needed to read and
+write the filesystem.  In the case of the <code>unix_io</code> io_manager,
+<var>name</var> is interpreted as the Unix filename of the filesystem image.
+This is often a device file, such as <samp>/dev/hda1</samp>.
+</p>
+<p>The <var>superblock</var> parameter specifies the block number of the
+superblock which should be used when opening the filesystem.
+If <var>superblock</var> is zero, <code>ext2fs_open</code> will use the primary
+superblock located at offset 1024 bytes from the start of the filesystem
+image.
+</p>
+<p>The <var>block_size</var> parameter specifies the block size used by the
+filesystem.  Normally this is determined automatically from the
+filesystem uperblock.  If <var>block_size</var> is non-zero, it must match
+the block size found in the superblock, or the error
+<code>EXT2_ET_UNEXPECTED_BLOCK_SIZE</code> will be returned.  The
+<var>block_size</var> parameter is also used to help fund the superblock when
+<var>superblock</var> is non-zero.
+</p>
+<p>The <var>flags</var> argument contains a bitmask of flags which control how
+the filesystem open should be handled.
+</p>
+<dl compact="compact">
+<dt><code>EXT2_FLAG_RW</code></dt>
+<dd><p>Open the filesystem for reading and writing.  Without this flag, the
+filesystem is opened for reading only.
+</p>
+</dd>
+<dt><code>EXT2_FLAG_FORCE</code></dt>
+<dd><p>Open the filesystem regardless of the feature sets listed in the
+superblock.
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+
+<hr>
+<a name="Closing-and-flushing-out-changes"></a>
+<div class="header">
+<p>
+Next: <a href="#Initializing-a-filesystem" accesskey="n" rel="next">Initializing a filesystem</a>, Previous: <a href="#Opening-an-ext2-filesystem" accesskey="p" rel="prev">Opening an ext2 filesystem</a>, Up: <a href="#Filesystem_002dlevel-functions" accesskey="u" rel="up">Filesystem-level functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Closing-and-flushing-out-changes-1"></a>
+<h4 class="subsection">2.1.2 Closing and flushing out changes</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fflush"></a>Function: <em>errcode_t</em> <strong>ext2fs_flush</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dd>
+<p>Write any changes to the high-level filesystem data structures in the
+<var>fs</var> filesystem.  The following data structures will be written out:
+</p>
+<ul>
+<li> The filesystem superblock
+</li><li> The filesystem group descriptors
+</li><li> The filesystem bitmaps, if read in via <code>ext2fs_read_bitmaps</code>.
+</li></ul>
+
+</dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffree"></a>Function: <em>void</em> <strong>ext2fs_free</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dd>
+<p>Close the io_manager abstraction for <var>fs</var> and release all memory
+associated with the filesystem handle.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fclose"></a>Function: <em>errcode_t</em> <strong>ext2fs_close</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dd>
+<p>Flush out any changes to the high-level filesystem data structures using
+<code>ext2fs_flush</code> if the filesystem is marked dirty; then close and
+free the filesystem using <code>ext2fs_free</code>.
+</p>
+</dd></dl>
+
+
+<hr>
+<a name="Initializing-a-filesystem"></a>
+<div class="header">
+<p>
+Next: <a href="#Filesystem-flag-functions" accesskey="n" rel="next">Filesystem flag functions</a>, Previous: <a href="#Closing-and-flushing-out-changes" accesskey="p" rel="prev">Closing and flushing out changes</a>, Up: <a href="#Filesystem_002dlevel-functions" accesskey="u" rel="up">Filesystem-level functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Initializing-a-filesystem-1"></a>
+<h4 class="subsection">2.1.3 Initializing a filesystem</h4>
+
+<p>An ext2 filesystem is initializing by the <code>mke2fs</code> program.  The
+two functions described here, <code>ext2fs_initialize</code> and
+<code>ext2fs_allocate_tables</code> do much of the initial work for setting up
+a filesystem.  However, they don&rsquo;t do the whole job.  <code>mke2fs</code>
+calls <code>ext2fs_initialize</code> to set up the filesystem superblock, and
+calls <code>ext2fs_allocate_tables</code> to allocate space for the inode
+table, and the inode and block bitmaps.  In addition, <code>mke2fs</code> must
+also initialize the inode tables by clearing them with zeros, create the
+root and lost+found directories, and reserve the reserved inodes.
+</p>
+<dl>
+<dt><a name="index-ext2fs_005finitialize"></a>Function: <em>errcode_t</em> <strong>ext2fs_initialize</strong> <em>(const char *<var>name</var>, int <var>flags</var>, struct ext2_super_block *<var>param</var>, io_manager <var>manager</var>, ext2_filsys *<var>ret_fs</var>)</em></dt>
+<dd>
+<p>This function is used by the <code>mke2fs</code> program to initialize a
+filesystem.  The <code>ext2fs_initialize</code> function creates a filesystem
+handle which is returned in <var>ret_fs</var> that has been properly setup
+for a filesystem to be located in <var>name</var>, using the io_manager
+<var>manager</var>.  The prototype superblock in <var>param</var> is used to
+supply parameters such as the number of blocks in the filesystem, the
+block size, etc.  
+</p>
+<p>The <code>ext2fs_initialize</code> function does not actually do any I/O; that
+will be done when the application program calls <code>ext2fs_close</code> or
+<code>ext2fs_flush</code>.  Also, this function only initializes the
+superblock and group descriptor structures.  It does not create the
+inode table or the root directory.  This must be done by the calling
+application, such as <code>mke2fs</code>.
+</p>
+<p>The following values may be set in the <var>param</var> prototype superblock;
+if a value of 0 is found in a field, <code>ext2fs_initialize</code> will use a
+default value.  The calling application should zero out the prototype
+entire superblock, and then fill in any appropriate values.
+</p>
+<dl compact="compact">
+<dt><code>s_blocks_count</code></dt>
+<dd><p>The number of blocks in the filesystem.  This parameter is mandatory and
+must be set by the calling application.
+</p>
+</dd>
+<dt><code>s_inodes_count</code></dt>
+<dd><p>The number of inodes in the filesystem.  The
+default value is determined by calculating the size of the filesystem,
+and creating one inode for every 4096 bytes.
+</p>
+</dd>
+<dt><code>s_r_blocks_count</code></dt>
+<dd><p>The number of blocks which should be reserved for the superuser.  The
+default value is zero blocks.
+</p>
+</dd>
+<dt><code>s_log_block_size</code></dt>
+<dd><p>The blocksize of the filesystem.  Valid values are 0 (1024 bytes), 1
+(2048 bytes), or 2 (4096 bytes).  The default blocksize is 1024 bytes.
+</p>
+</dd>
+<dt><code>s_log_frag_size</code></dt>
+<dd><p>The size of fragments.  The ext2 filesystem does not support fragments
+(and may never support fragments).  Currently this field must be the
+same as <code>s_log_block_size</code>.
+</p>
+</dd>
+<dt><code>s_first_data_block</code></dt>
+<dd><p>The first data block for the filesystem.  For filesystem with a
+blocksize of 1024 bytes, this value must be at least 1, since the
+superblock is located in block number 1.  For filesystems with larger
+blocksizes, the superblock is still located at an offset of 1024 bytes,
+so the superblock is located in block number 0.  By default, this value
+is set to 1 for filesystems with a block size of 1024 bytes, or 0 for
+filesystems with larger blocksizes.
+</p>
+</dd>
+<dt><code>s_max_mnt_count</code></dt>
+<dd><p>This field defines the number of times that the filesystem can be
+mounted before it should be checked using <code>e2fsck</code>.  When
+<code>e2fsck</code> is run without the &lsquo;<samp>-f</samp>&rsquo; option, <code>e2fsck</code> will
+skip the filesystem check if the number of times that the filesystem has
+been mounted is less than <code>s_max_mnt_count</code> and if the interval
+between the last time a filesystem check was performed and the current
+time is less than <code>s_checkinterval</code> (see below).  The default value
+of <code>s_max_mnt_count</code> is 20.
+</p>
+</dd>
+<dt><code>s_checkinterval</code></dt>
+<dd><p>This field defines the minimal interval between filesystem checks.  See
+the previous entry for a discussion of how this field is used by
+<code>e2fsck</code>.  The default value of this field is 180 days (six
+months).
+</p>
+</dd>
+<dt><code>s_errors</code></dt>
+<dd><p>This field defines the behavior which should be used by the kernel of
+errors are detected in the filesystem.  Possible values include:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>EXT2_ERRORS_CONTINUE</samp>&rsquo;</dt>
+<dd><p>Continue execution when errors are detected.
+</p>
+</dd>
+<dt>&lsquo;<samp>EXT2_ERRORS_RO</samp>&rsquo;</dt>
+<dd><p>Remount the filesystem read-only.
+</p>
+</dd>
+<dt>&lsquo;<samp>EXT2_ERRORS_PANIC</samp>&rsquo;</dt>
+<dd><p>Panic.
+</p>
+</dd>
+</dl>
+
+<p>The default behavior is &lsquo;<samp>EXT2_ERRORS_CONTINUE</samp>&rsquo;.
+</p>
+</dd>
+</dl>
+
+</dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fallocate_005ftables"></a>Function: <em>errcode_t</em> <strong>ext2fs_allocate_tables</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dd><p>Allocate space for the inode table and the block and inode bitmaps.  The
+inode tables and block and inode bitmaps aren&rsquo;t actually initialized;
+this function just allocates the space for them.
+</p></dd></dl>
+
+
+<hr>
+<a name="Filesystem-flag-functions"></a>
+<div class="header">
+<p>
+Previous: <a href="#Initializing-a-filesystem" accesskey="p" rel="prev">Initializing a filesystem</a>, Up: <a href="#Filesystem_002dlevel-functions" accesskey="u" rel="up">Filesystem-level functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Filesystem-flag-functions-1"></a>
+<h4 class="subsection">2.1.4 Filesystem flag functions</h4>
+
+<p>The filesystem handle has a number of flags which can be manipulated
+using the following function.  Some of these flags affect how the
+libext2fs filesystem behaves; others are provided solely for the
+application&rsquo;s convenience.
+</p>
+<dl>
+<dt><a name="index-ext2fs_005fmark_005fchanged"></a>Function: <em>void</em> <strong>ext2fs_mark_changed</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dt><a name="index-ext2fs_005ftest_005fchanged"></a>Function: <em>int</em> <strong>ext2fs_test_changed</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dd><p>This flag indicates whether or not the filesystem has been changed. 
+It is not used by the ext2fs library.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fmark_005fsuper_005fdirty"></a>Function: <em>void</em> <strong>ext2fs_mark_super_dirty</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dd><p>Mark the filesystem <var>fs</var> as being dirty; this will cause
+the superblock information to be flushed out when <code>ext2fs_close</code> is
+called.  <code>ext2fs_mark_super_dirty</code> will also set the filesystem 
+changed flag.  The dirty flag is automatically cleared by
+<code>ext2fs_flush</code> when the superblock is written to disk.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fmark_005fvalid"></a>Function: <em>void</em> <strong>ext2fs_mark_valid</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dt><a name="index-ext2fs_005funmark_005fvalid"></a>Function: <em>void</em> <strong>ext2fs_unmark_valid</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dt><a name="index-ext2fs_005ftest_005fvalid"></a>Function: <em>int</em> <strong>ext2fs_test_valid</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dd><p>This flag indicates whether or not the filesystem is free of errors.
+It is not used by libext2fs, and is solely for the application&rsquo;s 
+convenience.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fmark_005fib_005fdirty"></a>Function: <em>void</em> <strong>ext2fs_mark_ib_dirty</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dt><a name="index-ext2fs_005fmark_005fbb_005fdirty"></a>Function: <em>void</em> <strong>ext2fs_mark_bb_dirty</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dt><a name="index-ext2fs_005ftest_005fib_005fdirty"></a>Function: <em>int</em> <strong>ext2fs_test_ib_dirty</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dt><a name="index-ext2fs_005ftest_005fbb_005fdirty"></a>Function: <em>int</em> <strong>ext2fs_test_bb_dirty</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+<dd><p>These flags indicate whether or not the inode or block bitmaps have been
+modified.   If the flag is set, it will cause the appropriate bitmap
+to be written when the filesystem is closed or flushed.
+</p></dd></dl>
+
+
+<hr>
+<a name="File-I_002fO-Functions"></a>
+<div class="header">
+<p>
+Next: <a href="#Inode-Functions" accesskey="n" rel="next">Inode Functions</a>, Previous: <a href="#Filesystem_002dlevel-functions" accesskey="p" rel="prev">Filesystem-level functions</a>, Up: <a href="#EXT2FS-Library-Functions" accesskey="u" rel="up">EXT2FS Library Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="File-I_002fO-Functions-1"></a>
+<h3 class="section">2.2 File I/O Functions</h3>
+
+<p>The following functions provide a convenient abstraction to read or
+write a file in an filesystem.  The interface is similar in spirit to
+the Linux/POSIX file I/O system calls.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#File-handle-manipulation" accesskey="1">File handle manipulation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Reading-and-writing-data" accesskey="2">Reading and writing data</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Changing-the-file-offset" accesskey="3">Changing the file offset </a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Getting-the-file-size" accesskey="4">Getting the file size</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<a name="File-handle-manipulation"></a>
+<div class="header">
+<p>
+Next: <a href="#Reading-and-writing-data" accesskey="n" rel="next">Reading and writing data</a>, Previous: <a href="#File-I_002fO-Functions" accesskey="p" rel="prev">File I/O Functions</a>, Up: <a href="#File-I_002fO-Functions" accesskey="u" rel="up">File I/O Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="File-handle-manipulation-1"></a>
+<h4 class="subsection">2.2.1 File handle manipulation</h4>
+
+<p>The file handle functions much like a file descriptor in the Linux/POSIX
+file I/O system calls.  Unlike the Linux/POSIX system calls, files are
+opened via inode numbers instead of via pathnames.  To resolve a
+pathname to an inode number, use the function <code>ext2fs_namei</code> or to
+create a new file, use <code>ext2fs_new_inode</code> and <code>ext2fs_link</code>.
+</p>
+<dl>
+<dt><a name="index-ext2fs_005ffile_005fopen2"></a>Function: <em>errcode_t</em> <strong>ext2fs_file_open2</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>ino</var>, struct ext2_inode *<var>inode</var>, int <var>flags</var>, ext2_file_t *<var>ret</var>)</em></dt>
+<dt><a name="index-ext2fs_005ffile_005fopen"></a>Function: <em>errcode_t</em> <strong>ext2fs_file_open</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>ino</var>, int <var>flags</var>, ext2_file_t *<var>ret</var>)</em></dt>
+<dd>
+<p>Opens a file identified by inode number <var>ino</var> in filesystem <var>fs</var>
+and returns a file handle in <var>ret</var>.  If an inode structure is
+provided in <var>inode</var>, then it is used instead of reading the inode
+from the filesystem.
+</p>
+<p>The <var>flags</var> argument contains a bitmask of flags which control how
+the file should be opened.
+</p>
+<dl compact="compact">
+<dt><code>EXT2_FILE_WRITE</code></dt>
+<dd><p>Open the file for reading and writing.  Without this flag, the file is
+opened for writing only.
+</p>
+</dd>
+<dt><code>EXT2_FILE_CREATE</code></dt>
+<dd><p>Create the file if it is not already present.
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffile_005fget_005ffs"></a>Function: <em>ext2_filsys</em> <strong>ext2fs_file_get_fs</strong> <em>(ext2_file_t <var>file</var>)</em></dt>
+<dd><p>Return the filesystem handle where the open file <var>file</var> was opened.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffile_005fclose"></a>Function: <em>errcode_t</em> <strong>ext2fs_file_close</strong> <em>(ext2_file_t <var>file</var>)</em></dt>
+<dd><p>Close the file handle <var>file</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffile_005fflush"></a>Function: <em>errcode_t</em> <strong>ext2fs_file_flush</strong> <em>(ext2_file_t <var>file</var>)</em></dt>
+<dd><p>Force any data written via <code>ext2fs_file_write</code> to disk.
+</p></dd></dl>
+
+
+<hr>
+<a name="Reading-and-writing-data"></a>
+<div class="header">
+<p>
+Next: <a href="#Changing-the-file-offset" accesskey="n" rel="next">Changing the file offset</a>, Previous: <a href="#File-handle-manipulation" accesskey="p" rel="prev">File handle manipulation</a>, Up: <a href="#File-I_002fO-Functions" accesskey="u" rel="up">File I/O Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Reading-and-writing-data-1"></a>
+<h4 class="subsection">2.2.2 Reading and writing data</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005ffile_005fread"></a>Function: <em>errcode_t</em> <strong>ext2fs_file_read</strong> <em>(ext2_file_t <var>file</var>, void *<var>buf</var>, unsigned int <var>wanted</var>, unsigned int *<var>got</var>)</em></dt>
+<dd><p>Read <var>wanted</var> bytes of data from <var>file</var> store it in the buffer
+<var>buf</var>.  The number of bytes that was actually read is returned
+via <var>got</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffile_005fwrite"></a>Function: <em>errcode_t</em> <strong>ext2fs_file_write</strong> <em>(ext2_file_t <var>file</var>, const void *<var>buf</var>, unsigned int <var>nbytes</var>, unsigned int *<var>written</var>)</em></dt>
+<dd><p>Write <var>wanted</var> bytes of data from the buffer <var>buf</var> to the
+current file position of <var>file</var>.  The number of bytes that was 
+actually written is returned via <var>got</var>.
+</p></dd></dl>
+
+
+<hr>
+<a name="Changing-the-file-offset"></a>
+<div class="header">
+<p>
+Next: <a href="#Getting-the-file-size" accesskey="n" rel="next">Getting the file size</a>, Previous: <a href="#Reading-and-writing-data" accesskey="p" rel="prev">Reading and writing data</a>, Up: <a href="#File-I_002fO-Functions" accesskey="u" rel="up">File I/O Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Changing-the-file-offset-1"></a>
+<h4 class="subsection">2.2.3 Changing the file offset</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005ffile_005fllseek"></a>Function: <em>errcode_t</em> <strong>ext2fs_file_llseek</strong> <em>(ext2_file_t <var>file</var>, __u64 <var>offset</var>, int <var>whence</var>, __u64 *<var>ret_pos</var>)</em></dt>
+<dt><a name="index-ext2fs_005ffile_005flseek"></a>Function: <em>errcode_t</em> <strong>ext2fs_file_lseek</strong> <em>(ext2_file_t <var>file</var>, ext2_off_t <var>offset</var>, int <var>whence</var>, ext2_off_t *<var>ret_pos</var>)</em></dt>
+<dd><p>Change the current file position of <var>file</var> according to the
+directive <var>whence</var> as follows:
+</p>
+<dl compact="compact">
+<dt><code>EXT2_SEEK_SET</code></dt>
+<dd><p>The file position is set to <var>offset</var> bytes from the beginning of the
+file.
+</p>
+</dd>
+<dt><code>EXT2_SEEK_CUR</code></dt>
+<dd><p>The file position set to its current location plus <var>offset</var> bytes.
+</p>
+</dd>
+<dt><code>EXT2_SEEK_END</code></dt>
+<dd><p>The file position is set to the size of the file plus <var>offset</var>
+bytes.
+</p></dd>
+</dl>
+
+<p>The current offset is returned via <var>ret_pos</var>.
+</p></dd></dl>
+
+
+<hr>
+<a name="Getting-the-file-size"></a>
+<div class="header">
+<p>
+Previous: <a href="#Changing-the-file-offset" accesskey="p" rel="prev">Changing the file offset</a>, Up: <a href="#File-I_002fO-Functions" accesskey="u" rel="up">File I/O Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Getting-the-file-size-1"></a>
+<h4 class="subsection">2.2.4 Getting the file size</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005ffile_005fget_005flsize"></a>Function: <em>errcode_t</em> <strong>ext2fs_file_get_lsize</strong> <em>(ext2_file_t <var>file</var>, __u64 *<var>ret_size</var>)</em></dt>
+<dd><p>Return the size of the file <var>file</var> in <var>ret_size</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffile_005fget_005fsize"></a>Function: <em>ext2_off_t</em> <strong>ext2fs_file_get_size</strong> <em>(ext2_file_t <var>file</var>)</em></dt>
+<dd><p>Return the size of the file <var>file</var>.
+</p></dd></dl>
+
+
+<hr>
+<a name="Inode-Functions"></a>
+<div class="header">
+<p>
+Next: <a href="#Directory-functions" accesskey="n" rel="next">Directory functions</a>, Previous: <a href="#File-I_002fO-Functions" accesskey="p" rel="prev">File I/O Functions</a>, Up: <a href="#EXT2FS-Library-Functions" accesskey="u" rel="up">EXT2FS Library Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Inode-Functions-1"></a>
+<h3 class="section">2.3 Inode Functions</h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Reading-and-writing-inodes" accesskey="1">Reading and writing inodes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Iterating-over-inodes-in-a-filesystem" accesskey="2">Iterating over inodes in a filesystem</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Iterating-over-blocks-in-an-inode" accesskey="3">Iterating over blocks in an inode</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Inode-Convenience-Functions" accesskey="4">Inode Convenience Functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Reading-and-writing-inodes"></a>
+<div class="header">
+<p>
+Next: <a href="#Iterating-over-inodes-in-a-filesystem" accesskey="n" rel="next">Iterating over inodes in a filesystem</a>, Previous: <a href="#Inode-Functions" accesskey="p" rel="prev">Inode Functions</a>, Up: <a href="#Inode-Functions" accesskey="u" rel="up">Inode Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Reading-and-writing-inodes-1"></a>
+<h4 class="subsection">2.3.1 Reading and writing inodes</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fread_005finode"></a>Function: <em>errcode_t</em> <strong>ext2fs_read_inode</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>ino</var>, struct ext2_inode *<var>inode</var>)</em></dt>
+<dd><p>Read the inode number <var>ino</var> into <var>inode</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fwrite_005finode"></a>Function: <em>errcode_t</em> <strong>ext2fs_write_inode</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>ino</var>, struct ext2_inode *<var>inode</var>)</em></dt>
+<dd><p>Write <var>inode</var> to inode <var>ino</var>.
+</p></dd></dl>
+
+
+
+<hr>
+<a name="Iterating-over-inodes-in-a-filesystem"></a>
+<div class="header">
+<p>
+Next: <a href="#Iterating-over-blocks-in-an-inode" accesskey="n" rel="next">Iterating over blocks in an inode</a>, Previous: <a href="#Reading-and-writing-inodes" accesskey="p" rel="prev">Reading and writing inodes</a>, Up: <a href="#Inode-Functions" accesskey="u" rel="up">Inode Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Iterating-over-inodes-in-a-filesystem-1"></a>
+<h4 class="subsection">2.3.2 Iterating over inodes in a filesystem</h4>
+
+<p>The inode_scan abstraction is useful for iterating over all the inodes
+in a filesystem.  
+</p>
+<dl>
+<dt><a name="index-ext2fs_005fopen_005finode_005fscan"></a>Function: <em>errcode_t</em> <strong>ext2fs_open_inode_scan</strong> <em>(ext2_filsys <var>fs</var>, int <var>buffer_blocks</var>, ext2_inode_scan *<var>scan</var>)</em></dt>
+<dd><p>Initialize the iteration variable <var>scan</var>.  This variable is used by
+<code>ext2fs_get_next_inode</code>.  The <var>buffer_blocks</var> parameter
+controls how many blocks of the inode table are read in at a time.  A
+large number of blocks requires more memory, but reduces the overhead in
+seeking and reading from the disk.  If <var>buffer_blocks</var> is zero, a
+suitable default value will be used.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fclose_005finode_005fscan"></a>Function: <em>void</em> <strong>ext2fs_close_inode_scan</strong> <em>(ext2_inode_scan <var>scan</var>)</em></dt>
+<dd><p>Release the memory associated with <var>scan</var> and invalidate it.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fget_005fnext_005finode"></a>Function: <em>errcode_t</em> <strong>ext2fs_get_next_inode</strong> <em>(ext2_inode_scan <var>scan</var>, ext2_ino_t *<var>ino</var>, struct ext2_inode *<var>inode</var>)</em></dt>
+<dd>
+<p>This function returns the next inode from the filesystem; the inode
+number of the inode is stored in <var>ino</var>, and the inode is stored in
+<var>inode</var>.  
+</p>
+<p>If the inode is located in a block that has been marked as bad,
+<code>ext2fs_get_next_inode</code> will return the error
+<code>EXT2_ET_BAD_BLOCK_IN_INODE_TABLE</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005finode_005fscan_005fgoto_005fblockgroup"></a>Function: <em>errcode_t</em> <strong>ext2fs_inode_scan_goto_blockgroup</strong> <em>(ext2_inode_scan <var>scan</var>, int <var>group</var>)</em></dt>
+<dd><p>Start the inode scan at a particular ext2 blockgroup, <var>group</var>.  
+This function may be safely called at any time while <var>scan</var> is valid.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fset_005finode_005fcallback"></a>Function: <em>void</em> <strong>ext2fs_set_inode_callback</strong> <em>(ext2_inode_scan <var>scan</var>, errcode_t (*done_group)(ext2_filsys <var>fs</var>, ext2_inode_scan <var>scan</var>, dgrp_t <var>group</var>, void * <var>private</var>), void *<var>done_group_data</var>)</em></dt>
+<dd><p>Register a callback function which will be called by
+<code>ext2_get_next_inode</code> when all of the inodes in a block group have
+been processed.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005finode_005fscan_005fflags"></a>Function: <em>int</em> <strong>ext2fs_inode_scan_flags</strong> <em>(ext2_inode_scan <var>scan</var>, int <var>set_flags</var>, int <var>clear_flags</var>)</em></dt>
+<dd>
+<p>Set the scan_flags <var>set_flags</var> and clear the scan_flags <var>clear_flags</var>.
+The following flags can be set using this interface:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>EXT2_SF_SKIP_MISSING_ITABLE</samp>&rsquo;</dt>
+<dd><p>When a block group is missing an inode table, skip it.  If this flag is
+not set <code>ext2fs_get_next_inode</code> will return the error
+EXT2_ET_MISSING_INODE_TABLE.
+</p>
+</dd>
+</dl>
+
+</dd></dl>
+
+
+<hr>
+<a name="Iterating-over-blocks-in-an-inode"></a>
+<div class="header">
+<p>
+Next: <a href="#Inode-Convenience-Functions" accesskey="n" rel="next">Inode Convenience Functions</a>, Previous: <a href="#Iterating-over-inodes-in-a-filesystem" accesskey="p" rel="prev">Iterating over inodes in a filesystem</a>, Up: <a href="#Inode-Functions" accesskey="u" rel="up">Inode Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Iterating-over-blocks-in-an-inode-1"></a>
+<h4 class="subsection">2.3.3 Iterating over blocks in an inode</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fblock_005fiterate"></a>Function: <em>errcode_t</em> <strong>ext2fs_block_iterate</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>ino</var>, int <var>flags</var>, char *block_buf, int (*func)(ext2_filsys <var>fs</var>, blk_t *<var>blocknr</var>, int <var>blockcnt</var>, void *<var>private</var>), void *<var>private</var>)</em></dt>
+<dd>
+<p>Iterate over all of the blocks in inode number <var>ino</var> in filesystem
+<var>fs</var>, by calling the function <var>func</var> for each block in the
+inode.  The <var>block_buf</var> parameter should either be NULL, or if the
+<code>ext2fs_block_iterate</code> function is called repeatedly, the overhead
+of allocating and freeing scratch memory can be avoided by passing a
+pointer to a scratch buffer which must be at least as big as three times the
+filesystem&rsquo;s blocksize.  
+</p>
+<p>The <var>flags</var> parameter controls how the iterator will function:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>BLOCK_FLAG_HOLE</samp>&rsquo;</dt>
+<dd><p>This flag indiciates that the interator function should be called on
+blocks where the block number is zero (also known as &ldquo;holes&rdquo;.)  It is
+also known as BLOCK_FLAG_APPEND, since it is also used by functions
+such as ext2fs_expand_dir() to add a new block to an inode.
+</p>
+</dd>
+<dt>&lsquo;<samp>BLOCK_FLAG_DEPTH_TRAVERSE</samp>&rsquo;</dt>
+<dd><p>This flag indicates that the iterator function for the
+indirect, doubly indirect, etc. blocks should be called after all
+of the blocks containined in the indirect blocks are processed.
+This is useful if you are going to be deallocating blocks from an
+inode.
+</p>
+</dd>
+<dt>&lsquo;<samp>BLOCK_FLAG_DATA_ONLY</samp>&rsquo;</dt>
+<dd><p>This flag indicates that the iterator function should be
+called for data blocks only.
+</p>
+</dd>
+</dl>
+
+<p>The callback function <var>func</var> is called with a number of parameters;
+the <var>fs</var> and <var>private</var> parameters are self-explanatory, and
+their values are taken from the parameters to
+<code>ext2fs_block_iterate</code>.  (The <var>private</var> data structure is
+generally used by callers to <code>ext2fs_block_iterate</code> so that some
+private data structure can be passed to the callback function.  The 
+<var>blockcnt</var> parameter, if non-negative, indicates the logical block
+number of a data block in the inode.  If <var>blockcnt</var> is less than
+zero, then <var>func</var> was called on a metadata block, and <var>blockcnt</var>
+will be one of the following values:  BLOCK_COUNT_IND, BLOCK_COUNT_DIND,
+BLOCK_COUNT_TIND, or BLOCK_COUNT_TRANSLATOR.  The <var>blocknr</var> is a
+pointer to the inode or indirect block entry listing physical block
+number.  The callback function may modify the physical block number, if
+it returns the <var>BLOCK_CHANGED</var> flag.
+</p>
+
+<p>The callback function <var>func</var> returns a result code which is composed of
+the logical OR of the following flags:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>BLOCK_CHANGED</samp>&rsquo;</dt>
+<dd>
+<p>This flag indicates that callback function has modified the physical
+block number pointed to by <var>blocknr</var>.
+</p>
+</dd>
+<dt>&lsquo;<samp>BLOCK_ABORT</samp>&rsquo;</dt>
+<dd>
+<p>This flag requests that <code>ext2fs_block_iterate</code> to stop immediately
+and return to the caller.
+</p>
+</dd>
+</dl>
+
+</dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fblock_005fiterate2"></a>Function: <em>errcode_t</em> <strong>ext2fs_block_iterate2</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>ino</var>, int <var>flags</var>, char *<var>block</var>_buf, int (*func)(ext2_filsys <var>fs</var>, blk_t *<var>blocknr</var>, e2_blkcnt_t <var>blockcnt</var>, blk_t <var>ref_blk</var>, int  <var>ref_offset</var>, void *<var>private</var>), void *<var>private</var>)</em></dt>
+<dd>
+<p>This function is much like <code>ext2fs_block_iterate</code>, except that the
+<var>blockcnt</var> type is a 64-bit signed quantity, to support larger
+files, and the addition of the <var>ref_blk</var> and <var>ref_offset</var>
+arguments passed to the callback function, which identify the location
+of the physical block pointed to by pointer <var>blocknr</var>.  If
+<var>ref_blk</var> is zero, then <var>ref_offset</var> contains the offset into
+the <code>i_blocks</code> array.  If <var>ref_blk</var> is non-zero, then the physical
+block location is contained inside an indirect block group, and
+<var>ref_offset</var> contains the offset into the indirect block.
+</p>
+</dd></dl>
+
+
+<hr>
+<a name="Inode-Convenience-Functions"></a>
+<div class="header">
+<p>
+Previous: <a href="#Iterating-over-blocks-in-an-inode" accesskey="p" rel="prev">Iterating over blocks in an inode</a>, Up: <a href="#Inode-Functions" accesskey="u" rel="up">Inode Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Convenience-functions-for-Inodes"></a>
+<h4 class="subsection">2.3.4 Convenience functions for Inodes</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fget_005fblocks"></a>Function: <em>errcode_t</em> <strong>ext2fs_get_blocks</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>ino</var>, blk_t *<var>blocks</var>)</em></dt>
+<dd>
+<p>Returns an array of blocks corresponding to the direct,
+indirect, doubly indirect, and triply indirect blocks as stored in the
+inode structure.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fcheck_005fdirectory"></a>Function: <em>errcode_t</em> <strong>ext2fs_check_directory</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>ino</var>)</em></dt>
+<dd><p>Returns 0 if <var>ino</var> is a directory, and <code>ENOTDIR</code> if it is not.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005finode_005fhas_005fvalid_005fblocks"></a>Function: <em>int</em> <strong>ext2fs_inode_has_valid_blocks</strong> <em>(struct ext2_inode *<var>inode</var>)</em></dt>
+<dd>
+<p>Returns 1 if the inode&rsquo;s block entries actually valid block entries, and
+0 if not.  Inodes which represent devices and fast symbolic links do not
+contain valid block entries.
+</p></dd></dl>
+
+
+<hr>
+<a name="Directory-functions"></a>
+<div class="header">
+<p>
+Next: <a href="#Bitmap-Functions" accesskey="n" rel="next">Bitmap Functions</a>, Previous: <a href="#Inode-Functions" accesskey="p" rel="prev">Inode Functions</a>, Up: <a href="#EXT2FS-Library-Functions" accesskey="u" rel="up">EXT2FS Library Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Directory-functions-1"></a>
+<h3 class="section">2.4 Directory functions</h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Directory-block-functions" accesskey="1">Directory block functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Iterating-over-a-directory" accesskey="2">Iterating over a directory</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Creating-and-expanding-directories" accesskey="3">Creating and expanding directories</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Creating-and-removing-directory-entries" accesskey="4">Creating and removing directory entries</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Looking-up-filenames" accesskey="5">Looking up filenames</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Translating-inode-numbers-to-filenames" accesskey="6">Translating inode numbers to filenames</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Directory-block-functions"></a>
+<div class="header">
+<p>
+Next: <a href="#Iterating-over-a-directory" accesskey="n" rel="next">Iterating over a directory</a>, Previous: <a href="#Directory-functions" accesskey="p" rel="prev">Directory functions</a>, Up: <a href="#Directory-functions" accesskey="u" rel="up">Directory functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Directory-block-functions-1"></a>
+<h4 class="subsection">2.4.1 Directory block functions</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fread_005fdir_005fblock"></a>Function: <em>errcode_t</em> <strong>ext2fs_read_dir_block</strong> <em>(ext2_filsys <var>fs</var>, blk_t <var>block</var>, void *<var>buf</var>)</em></dt>
+<dd>
+<p>This function reads a directory block, performing any necessary
+byte swapping if necessary.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fwrite_005fdir_005fblock"></a>Function: <em>errcode_t</em> <strong>ext2fs_write_dir_block</strong> <em>(ext2_filsys <var>fs</var>, blk_t <var>block</var>, void *<var>buf</var>)</em></dt>
+<dd>
+<p>This function writes a directory block, performing any necessary
+byte swapping if necessary.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fnew_005fdir_005fblock"></a>Function: <em>errcode_t</em> <strong>ext2fs_new_dir_block</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>dir_ino</var>, ext2_ino_t <var>parent_ino</var>, char **<var>block</var>)</em></dt>
+<dd>
+<p>This function creates a new directory block in <var>block</var>.  If
+<var>dir_ino</var> is non-zero, then <var>dir_info</var> and <var>parent_ino</var> is used
+to initialize directory entries for <samp>.</samp> and <samp>..</samp>, respectively.
+</p></dd></dl>
+
+
+<hr>
+<a name="Iterating-over-a-directory"></a>
+<div class="header">
+<p>
+Next: <a href="#Creating-and-expanding-directories" accesskey="n" rel="next">Creating and expanding directories</a>, Previous: <a href="#Directory-block-functions" accesskey="p" rel="prev">Directory block functions</a>, Up: <a href="#Directory-functions" accesskey="u" rel="up">Directory functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Iterating-over-a-directory-1"></a>
+<h4 class="subsection">2.4.2 Iterating over a directory</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fdir_005fiterate"></a>Function: <em>errcode_t</em> <strong>ext2fs_dir_iterate</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>dir</var>, int <var>flags</var>, char *<var>block_buf</var>, int (*<var>func</var>)(struct ext2_dir_entry *<var>dirent</var>, int <var>offset</var>, int <var>blocksize</var>, char *<var>buf</var>, void *<var>private</var>), void *<var>private</var>)</em></dt>
+<dd>
+<p>This function iterates over all of the directory entries in the
+directory <var>dir</var>, calling the callback function <var>func</var> for each
+directory entry in the directory.  The <var>block_buf</var> parameter should
+either be NULL, or if the <code>ext2fs_dir_iterate</code> function is 
+called repeatedly, the overhead of allocating and freeing 
+scratch memory can be avoided by passing a pointer to a scratch buffer
+which must be at least as big as the filesystem&rsquo;s blocksize.  
+</p>
+<p>The <var>flags</var> parameter controls how the iterator will function:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>DIRENT_FLAG_INCLUDE_EMPTY</samp>&rsquo;</dt>
+<dd>
+<p>This flag indicates that the callback function should be called even 
+for deleted or empty directory entries.
+</p>
+</dd>
+</dl>
+
+</dd></dl>
+
+
+<hr>
+<a name="Creating-and-expanding-directories"></a>
+<div class="header">
+<p>
+Next: <a href="#Creating-and-removing-directory-entries" accesskey="n" rel="next">Creating and removing directory entries</a>, Previous: <a href="#Iterating-over-a-directory" accesskey="p" rel="prev">Iterating over a directory</a>, Up: <a href="#Directory-functions" accesskey="u" rel="up">Directory functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Creating-and-expanding-directories-1"></a>
+<h4 class="subsection">2.4.3 Creating and expanding directories</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fmkdir"></a>Function: <em>errcode_t</em> <strong>ext2fs_mkdir</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>parent</var>, ext2_ino_t <var>inum</var>, const char *<var>name</var>)</em></dt>
+<dd>
+<p>This function creates a new directory.  If <var>inum</var> is zero, then a
+new inode will be allocated; otherwise, the directory will be created in
+the inode specified by <var>inum</var>.  If <var>name</var> specifies the name of
+the new directory; if it is non-NULL, then the new directory will be
+linked into the parent directory <var>parent</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fexpand_005fdir"></a>Function: <em>errcode_t</em> <strong>ext2fs_expand_dir</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>dir</var>)</em></dt>
+<dd>
+<p>This function adds a new empty directory block and appends it to 
+the directory <var>dir</var>.  This allows functions such as
+<code>ext2fs_link</code> to add new directory entries to a directory which is full.
+</p>
+</dd></dl>
+
+
+<hr>
+<a name="Creating-and-removing-directory-entries"></a>
+<div class="header">
+<p>
+Next: <a href="#Looking-up-filenames" accesskey="n" rel="next">Looking up filenames</a>, Previous: <a href="#Creating-and-expanding-directories" accesskey="p" rel="prev">Creating and expanding directories</a>, Up: <a href="#Directory-functions" accesskey="u" rel="up">Directory functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Creating-and-removing-directory-entries-1"></a>
+<h4 class="subsection">2.4.4 Creating and removing directory entries</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005flink"></a>Function: <em>errcode_t</em> <strong>ext2fs_link</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>dir</var>, const char *<var>name</var>, ext2_ino_t <var>ino</var>, int flags)</em></dt>
+<dd>
+<p>This function adds a new directory entry to the directory <var>dir</var>, 
+with <var>name</var> and <var>ino</var> specifying the name and inode number in
+the directory entry, respectively.  
+</p>
+<p>The low 3 bits of the flags field is used to specify the file type of
+inode:   (No other flags are currently defined.)
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>EXT2_FT_UNKNOWN</samp>&rsquo;</dt>
+<dd>
+<p>The file type is unknown.
+</p>
+</dd>
+<dt>&lsquo;<samp>EXT2_FT_REG_FILE</samp>&rsquo;</dt>
+<dd>
+<p>The file type is a normal file.
+</p>
+</dd>
+<dt>&lsquo;<samp>EXT2_FT_DIR</samp>&rsquo;</dt>
+<dd>
+<p>The file type is a directory.
+</p>
+</dd>
+<dt>&lsquo;<samp>EXT2_FT_CHRDEV</samp>&rsquo;</dt>
+<dd>
+<p>The file type is a character device.
+</p>
+</dd>
+<dt>&lsquo;<samp>EXT2_FT_BLKDEV</samp>&rsquo;</dt>
+<dd>
+<p>The file type is a block device.
+</p>
+</dd>
+<dt>&lsquo;<samp>EXT2_FT_FIFO</samp>&rsquo;</dt>
+<dd>
+<p>The file type is a named pipe.
+</p>
+</dd>
+<dt>&lsquo;<samp>EXT2_FT_SOCK</samp>&rsquo;</dt>
+<dd>
+<p>The file type is a unix domain socket.
+</p>
+</dd>
+<dt>&lsquo;<samp>EXT2_FT_SYMLINK</samp>&rsquo;</dt>
+<dd>
+<p>The file type is a symbolic link.
+</p></dd>
+</dl>
+
+</dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005funlink"></a>Function: <em>errcode_t</em> <strong>ext2fs_unlink</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>dir</var>, const char *<var>name</var>, ext2_ino_t <var>ino</var>, int <var>flags</var>)</em></dt>
+<dd>
+<p>This function removes a directory entry from <var>dir</var>.
+The directory entry to be removed is the first one which is
+matched by <var>name</var> and <var>ino</var>.  If <var>name</var> is non-NULL, 
+the directory entry&rsquo;s name must match <var>name</var>.  If <var>ino</var> is
+non-zero, the directory entry&rsquo;s inode number must match <var>ino</var>.
+No flags are currently defined for <code>ext2fs_unlink</code>; callers should
+pass in zero to this parameter.
+</p>
+</dd></dl>
+
+
+<hr>
+<a name="Looking-up-filenames"></a>
+<div class="header">
+<p>
+Next: <a href="#Translating-inode-numbers-to-filenames" accesskey="n" rel="next">Translating inode numbers to filenames</a>, Previous: <a href="#Creating-and-removing-directory-entries" accesskey="p" rel="prev">Creating and removing directory entries</a>, Up: <a href="#Directory-functions" accesskey="u" rel="up">Directory functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Looking-up-filenames-1"></a>
+<h4 class="subsection">2.4.5 Looking up filenames</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005flookup"></a>Function: <em>errcode_t</em> <strong>ext2fs_lookup</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>dir</var>, const char *<var>name</var>, int <var>namelen</var>, char *<var>buf</var>, ext2_ino_t *<var>inode</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fnamei"></a>Function: <em>errcode_t</em> <strong>ext2fs_namei</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>root</var>, ext2_ino_t <var>cwd</var>, const char *<var>name</var>, ext2_ino_t *<var>inode</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fnamei_005ffollow"></a>Function: <em>errcode_t</em> <strong>ext2fs_namei_follow</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>root</var>, ext2_ino_t <var>cwd</var>, const char *<var>name</var>, ext2_ino_t *<var>inode</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffollow_005flink"></a>Function: <em>errcode_t</em> <strong>ext2fs_follow_link</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>root</var>, ext2_ino_t <var>cwd</var>, ext2_ino_t <var>inode</var>, ext2_ino_t *<var>res</var>_inode)</em></dt>
+</dl>
+
+
+<hr>
+<a name="Translating-inode-numbers-to-filenames"></a>
+<div class="header">
+<p>
+Previous: <a href="#Looking-up-filenames" accesskey="p" rel="prev">Looking up filenames</a>, Up: <a href="#Directory-functions" accesskey="u" rel="up">Directory functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Translating-inode-numbers-to-filenames-1"></a>
+<h4 class="subsection">2.4.6 Translating inode numbers to filenames</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fget_005fpathname"></a>Function: <em>errcode_t</em> <strong>ext2fs_get_pathname</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>dir</var>, ext2_ino_t <var>ino</var>, char **<var>name</var>)</em></dt>
+</dl>
+
+
+
+<hr>
+<a name="Bitmap-Functions"></a>
+<div class="header">
+<p>
+Next: <a href="#EXT2-data-abstractions" accesskey="n" rel="next">EXT2 data abstractions</a>, Previous: <a href="#Directory-functions" accesskey="p" rel="prev">Directory functions</a>, Up: <a href="#EXT2FS-Library-Functions" accesskey="u" rel="up">EXT2FS Library Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Bitmap-Functions-1"></a>
+<h3 class="section">2.5 Bitmap Functions</h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Reading-and-Writing-Bitmaps" accesskey="1">Reading and Writing Bitmaps</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Allocating-Bitmaps" accesskey="2">Allocating Bitmaps</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Free-bitmaps" accesskey="3">Free bitmaps</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bitmap-Operations" accesskey="4">Bitmap Operations</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Comparing-bitmaps" accesskey="5">Comparing bitmaps</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Modifying-Bitmaps" accesskey="6">Modifying Bitmaps</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Resizing-Bitmaps" accesskey="7">Resizing Bitmaps</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Clearing-Bitmaps" accesskey="8">Clearing Bitmaps</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Reading-and-Writing-Bitmaps"></a>
+<div class="header">
+<p>
+Next: <a href="#Allocating-Bitmaps" accesskey="n" rel="next">Allocating Bitmaps</a>, Previous: <a href="#Bitmap-Functions" accesskey="p" rel="prev">Bitmap Functions</a>, Up: <a href="#Bitmap-Functions" accesskey="u" rel="up">Bitmap Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Reading-and-Writing-Bitmaps-1"></a>
+<h4 class="subsection">2.5.1 Reading and Writing Bitmaps</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fwrite_005finode_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_write_inode_bitmap</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fwrite_005fblock_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_write_block_bitmap</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fread_005finode_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_read_inode_bitmap</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fread_005fblock_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_read_block_bitmap</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fread_005fbitmaps"></a>Function: <em>errcode_t</em> <strong>ext2fs_read_bitmaps</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fwrite_005fbitmaps"></a>Function: <em>errcode_t</em> <strong>ext2fs_write_bitmaps</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+</dl>
+
+
+<hr>
+<a name="Allocating-Bitmaps"></a>
+<div class="header">
+<p>
+Next: <a href="#Free-bitmaps" accesskey="n" rel="next">Free bitmaps</a>, Previous: <a href="#Reading-and-Writing-Bitmaps" accesskey="p" rel="prev">Reading and Writing Bitmaps</a>, Up: <a href="#Bitmap-Functions" accesskey="u" rel="up">Bitmap Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Allocating-Bitmaps-1"></a>
+<h4 class="subsection">2.5.2 Allocating Bitmaps</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fallocate_005fgeneric_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_allocate_generic_bitmap</strong> <em>(__u32 <var>start</var>, __u32 <var>end</var>, _u32 <var>real_end</var>, const char *<var>descr</var>, ext2fs_generic_bitmap *<var>ret</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fallocate_005fblock_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_allocate_block_bitmap</strong> <em>(ext2_filsys <var>fs</var>, const char *<var>descr</var>, ext2fs_block_bitmap *<var>ret</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fallocate_005finode_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_allocate_inode_bitmap</strong> <em>(ext2_filsys <var>fs</var>, const char *<var>descr</var>, ext2fs_inode_bitmap *<var>ret</var>)</em></dt>
+</dl>
+
+
+<hr>
+<a name="Free-bitmaps"></a>
+<div class="header">
+<p>
+Next: <a href="#Bitmap-Operations" accesskey="n" rel="next">Bitmap Operations</a>, Previous: <a href="#Allocating-Bitmaps" accesskey="p" rel="prev">Allocating Bitmaps</a>, Up: <a href="#Bitmap-Functions" accesskey="u" rel="up">Bitmap Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Freeing-bitmaps"></a>
+<h4 class="subsection">2.5.3 Freeing bitmaps</h4>
+
+
+<dl>
+<dt><a name="index-ext2fs_005ffree_005fgeneric_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_free_generic_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffree_005fblock_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_free_block_bitmap</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffree_005finode_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_free_inode_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>)</em></dt>
+</dl>
+
+
+
+<hr>
+<a name="Bitmap-Operations"></a>
+<div class="header">
+<p>
+Next: <a href="#Comparing-bitmaps" accesskey="n" rel="next">Comparing bitmaps</a>, Previous: <a href="#Free-bitmaps" accesskey="p" rel="prev">Free bitmaps</a>, Up: <a href="#Bitmap-Functions" accesskey="u" rel="up">Bitmap Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Bitmap-Operations-1"></a>
+<h4 class="subsection">2.5.4 Bitmap Operations</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fmark_005fblock_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_mark_block_bitmap</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>, blk_t <var>block</var>)</em></dt>
+<dt><a name="index-ext2fs_005funmark_005fblock_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_unmark_block_bitmap</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>, blk_t <var>block</var>)</em></dt>
+<dt><a name="index-ext2fs_005ftest_005fblock_005fbitmap"></a>Function: <em>int</em> <strong>ext2fs_test_block_bitmap</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>, blk_t <var>block</var>)</em></dt>
+<dd>
+<p>These functions set, clear, and test bits in a block bitmap <var>bitmap</var>.
+</p></dd></dl>
+
+
+<dl>
+<dt><a name="index-ext2fs_005fmark_005finode_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_mark_inode_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>, ext2_ino_t <var>inode</var>)</em></dt>
+<dt><a name="index-ext2fs_005funmark_005finode_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_unmark_inode_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>, ext2_ino_t <var>inode</var>)</em></dt>
+<dt><a name="index-ext2fs_005ftest_005finode_005fbitmap"></a>Function: <em>int</em> <strong>ext2fs_test_inode_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>, ext2_ino_t <var>inode</var>)</em></dt>
+<dd>
+<p>These functions set, clear, and test bits in an inode bitmap <var>bitmap</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffast_005fmark_005fblock_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_fast_mark_block_bitmap</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>, blk_t <var>block</var>)</em></dt>
+<dt><a name="index-ext2fs_005ffast_005funmark_005fblock_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_fast_unmark_block_bitmap</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>, blk_t <var>block</var>)</em></dt>
+<dt><a name="index-ext2fs_005ffast_005ftest_005fblock_005fbitmap"></a>Function: <em>int</em> <strong>ext2fs_fast_test_block_bitmap</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>, blk_t <var>block</var>)</em></dt>
+<dt><a name="index-ext2fs_005ffast_005fmark_005finode_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_fast_mark_inode_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>, ext2_ino_t <var>inode</var>)</em></dt>
+<dt><a name="index-ext2fs_005ffast_005funmark_005finode_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_fast_unmark_inode_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>, ext2_ino_t <var>inode</var>)</em></dt>
+<dt><a name="index-ext2fs_005ffast_005ftest_005finode_005fbitmap"></a>Function: <em>int</em> <strong>ext2fs_fast_test_inode_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>, ext2_ino_t <var>inode</var>)</em></dt>
+<dd>
+<p>These &ldquo;fast&rdquo; functions are like their normal counterparts; however,
+they are implemented as inline functions and do not perform bounds
+checks on the inode number or block number; they are assumed to be
+correct.  They should only be used in speed-critical applications, where
+the inode or block number has already been validated by other means.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fget_005fblock_005fbitmap_005fstart"></a>Function: <em>blk_t</em> <strong>ext2fs_get_block_bitmap_start</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>)</em></dt>
+<dt><a name="index-ext2fs_005fget_005finode_005fbitmap_005fstart"></a>Function: <em>ext2_ino_t</em> <strong>ext2fs_get_inode_bitmap_start</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>)</em></dt>
+<dd><p>Return the first inode or block which is stored in the bitmap.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fget_005fblock_005fbitmap_005fend"></a>Function: <em>blk_t</em> <strong>ext2fs_get_block_bitmap_end</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>)</em></dt>
+<dt><a name="index-ext2fs_005fget_005finode_005fbitmap_005fend"></a>Function: <em>ext2_ino_t</em> <strong>ext2fs_get_inode_bitmap_end</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>)</em></dt>
+<dd>
+<p>Return the last inode or block which is stored in the bitmap.
+</p></dd></dl>
+
+
+
+<hr>
+<a name="Comparing-bitmaps"></a>
+<div class="header">
+<p>
+Next: <a href="#Modifying-Bitmaps" accesskey="n" rel="next">Modifying Bitmaps</a>, Previous: <a href="#Bitmap-Operations" accesskey="p" rel="prev">Bitmap Operations</a>, Up: <a href="#Bitmap-Functions" accesskey="u" rel="up">Bitmap Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Comparing-bitmaps-1"></a>
+<h4 class="subsection">2.5.5 Comparing bitmaps</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fcompare_005fblock_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_compare_block_bitmap</strong> <em>(ext2fs_block_bitmap <var>bm1</var>, ext2fs_block_bitmap <var>bm2</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fcompare_005finode_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_compare_inode_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bm1</var>, ext2fs_inode_bitmap <var>bm2</var>)</em></dt>
+</dl>
+
+
+
+<hr>
+<a name="Modifying-Bitmaps"></a>
+<div class="header">
+<p>
+Next: <a href="#Resizing-Bitmaps" accesskey="n" rel="next">Resizing Bitmaps</a>, Previous: <a href="#Comparing-bitmaps" accesskey="p" rel="prev">Comparing bitmaps</a>, Up: <a href="#Bitmap-Functions" accesskey="u" rel="up">Bitmap Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Modifying-Bitmaps-1"></a>
+<h4 class="subsection">2.5.6 Modifying Bitmaps</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005ffudge_005finode_005fbitmap_005fend"></a>Function: <em>errcode_t</em> <strong>ext2fs_fudge_inode_bitmap_end</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>, ext2_ino_t <var>end</var>, ext2_ino_t *<var>oend</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffudge_005fblock_005fbitmap_005fend"></a>Function: <em>errcode_t</em> <strong>ext2fs_fudge_block_bitmap_end</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>, blk_t <var>end</var>, blk_t *<var>oend</var>)</em></dt>
+</dl>
+
+
+<hr>
+<a name="Resizing-Bitmaps"></a>
+<div class="header">
+<p>
+Next: <a href="#Clearing-Bitmaps" accesskey="n" rel="next">Clearing Bitmaps</a>, Previous: <a href="#Modifying-Bitmaps" accesskey="p" rel="prev">Modifying Bitmaps</a>, Up: <a href="#Bitmap-Functions" accesskey="u" rel="up">Bitmap Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Resizing-Bitmaps-1"></a>
+<h4 class="subsection">2.5.7 Resizing Bitmaps</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fresize_005fgeneric_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_resize_generic_bitmap</strong> <em>(__u32 <var>new_end</var>, __u32 <var>new_real_end</var>, ext2fs_generic_bitmap <var>bmap</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fresize_005finode_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_resize_inode_bitmap</strong> <em>(__u32 <var>new_end</var>, __u32 <var>new_real_end</var>, ext2fs_inode_bitmap <var>bmap</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fresize_005fblock_005fbitmap"></a>Function: <em>errcode_t</em> <strong>ext2fs_resize_block_bitmap</strong> <em>(__u32 <var>new_end</var>, __u32 <var>new_real_end</var>, ext2fs_block_bitmap <var>bmap</var>)</em></dt>
+</dl>
+
+
+
+<hr>
+<a name="Clearing-Bitmaps"></a>
+<div class="header">
+<p>
+Previous: <a href="#Resizing-Bitmaps" accesskey="p" rel="prev">Resizing Bitmaps</a>, Up: <a href="#Bitmap-Functions" accesskey="u" rel="up">Bitmap Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Clearing-Bitmaps-1"></a>
+<h4 class="subsection">2.5.8 Clearing Bitmaps</h4>
+
+<dl>
+<dt><a name="index-ext2fs_005fclear_005finode_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_clear_inode_bitmap</strong> <em>(ext2fs_inode_bitmap <var>bitmap</var>)</em></dt>
+<dd>
+<p>This function sets all of the bits in the inode bitmap <var>bitmap</var> to 
+be zero.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fclear_005fblock_005fbitmap"></a>Function: <em>void</em> <strong>ext2fs_clear_block_bitmap</strong> <em>(ext2fs_block_bitmap <var>bitmap</var>)</em></dt>
+<dd>
+<p>This function sets all of the bits in the block bitmap <var>bitmap</var> to 
+be zero.
+</p></dd></dl>
+
+
+
+<hr>
+<a name="EXT2-data-abstractions"></a>
+<div class="header">
+<p>
+Next: <a href="#Byte_002dswapping-functions" accesskey="n" rel="next">Byte-swapping functions</a>, Previous: <a href="#Bitmap-Functions" accesskey="p" rel="prev">Bitmap Functions</a>, Up: <a href="#EXT2FS-Library-Functions" accesskey="u" rel="up">EXT2FS Library Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="EXT2-data-abstractions-1"></a>
+<h3 class="section">2.6 EXT2 data abstractions</h3>
+
+<p>The ext2 library has a number of abstractions which are useful for ext2
+utility programs.  
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Badblocks-list-management" accesskey="1">Badblocks list management</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Directory_002dblock-list-management" accesskey="2">Directory-block list management</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Inode-count-functions" accesskey="3">Inode count functions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Badblocks-list-management"></a>
+<div class="header">
+<p>
+Next: <a href="#Directory_002dblock-list-management" accesskey="n" rel="next">Directory-block list management</a>, Previous: <a href="#EXT2-data-abstractions" accesskey="p" rel="prev">EXT2 data abstractions</a>, Up: <a href="#EXT2-data-abstractions" accesskey="u" rel="up">EXT2 data abstractions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Badblocks-list-management-1"></a>
+<h4 class="subsection">2.6.1 Badblocks list management</h4>
+
+
+<dl>
+<dt><a name="index-ext2fs_005fbadblocks_005flist_005fcreate"></a>Function: <em>errcode_t</em> <strong>ext2fs_badblocks_list_create</strong> <em>(ext2_badblocks_list *<var>ret</var>, int <var>size</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fbadblocks_005flist_005ffree"></a>Function: <em>void</em> <strong>ext2fs_badblocks_list_free</strong> <em>(ext2_badblocks_list <var>bb</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fbadblocks_005flist_005fadd"></a>Function: <em>errcode_t</em> <strong>ext2fs_badblocks_list_add</strong> <em>(ext2_badblocks_list <var>bb</var>, blk_t <var>blk</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fbadblocks_005flist_005ftest"></a>Function: <em>int</em> <strong>ext2fs_badblocks_list_test</strong> <em>(ext2_badblocks_list <var>bb</var>, blk_t <var>blk</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fbadblocks_005flist_005fiterate_005fbegin"></a>Function: <em>errcode_t</em> <strong>ext2fs_badblocks_list_iterate_begin</strong> <em>(ext2_badblocks_list <var>bb</var>, ext2_badblocks_iterate *<var>ret</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fbadblocks_005flist_005fiterate"></a>Function: <em>int</em> <strong>ext2fs_badblocks_list_iterate</strong> <em>(ext2_badblocks_iterate iter, blk_t *<var>blk</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fbadblocks_005flist_005fiterate_005fend"></a>Function: <em>void</em> <strong>ext2fs_badblocks_list_iterate_end</strong> <em>(ext2_badblocks_iterate <var>iter</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fupdate_005fbb_005finode"></a>Function: <em>errcode_t</em> <strong>ext2fs_update_bb_inode</strong> <em>(ext2_filsys <var>fs</var>, ext2_badblocks_list <var>bb_list</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fread_005fbb_005finode"></a>Function: <em>errcode_t</em> <strong>ext2fs_read_bb_inode</strong> <em>(ext2_filsys <var>fs</var>, ext2_badblocks_list *<var>bb_list</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fread_005fbb_005fFILE"></a>Function: <em>errcode_t</em> <strong>ext2fs_read_bb_FILE</strong> <em>(ext2_filsys <var>fs</var>, FILE *f, ext2_badblocks_list *<var>bb_list</var>, void (*invalid)(ext2_filsys <var>fs</var>, blk_t <var>blk</var>))</em></dt>
+</dl>
+
+
+
+<hr>
+<a name="Directory_002dblock-list-management"></a>
+<div class="header">
+<p>
+Next: <a href="#Inode-count-functions" accesskey="n" rel="next">Inode count functions</a>, Previous: <a href="#Badblocks-list-management" accesskey="p" rel="prev">Badblocks list management</a>, Up: <a href="#EXT2-data-abstractions" accesskey="u" rel="up">EXT2 data abstractions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Directory_002dblock-list-management-1"></a>
+<h4 class="subsection">2.6.2 Directory-block list management</h4>
+
+<p>The dblist abstraction stores a list of blocks belonging to
+directories.  This list can be useful when a program needs to interate
+over all directory entries in a filesystem; <code>e2fsck</code> does this in
+pass 2 of its operations, and <code>debugfs</code> needs to do this when it is
+trying to turn an inode number into a pathname.
+</p>
+<dl>
+<dt><a name="index-ext2fs_005finit_005fdblist"></a>Function: <em>errcode_t</em> <strong>ext2fs_init_dblist</strong> <em>(ext2_filsys <var>fs</var>, ext2_dblist *<var>ret_dblist</var>)</em></dt>
+<dd>
+<p>Creates a dblist data structure and return it in <var>ret_dblist</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffree_005fdblist"></a>Function: <em>void</em> <strong>ext2fs_free_dblist</strong> <em>(ext2_dblist <var>dblist</var>)</em></dt>
+<dd>
+<p>Free a dblist data structure.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fadd_005fdir_005fblock"></a>Function: <em>errcode_t</em> <strong>ext2fs_add_dir_block</strong> <em>(ext2_dblist <var>dblist</var>, ext2_ino_t <var>ino</var>, blk_t <var>blk</var>, int <var>blockcnt</var>)</em></dt>
+<dd>
+<p>Add an entry to the dblist data structure.  This call records the fact
+that block number <var>blockcnt</var> of directory inode <var>ino</var> is stored
+in block <var>blk</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fset_005fdir_005fblock"></a>Function: <em>errcode_t</em> <strong>ext2fs_set_dir_block</strong> <em>(ext2_dblist <var>dblist</var>, ext2_ino_t <var>ino</var>, blk_t <var>blk</var>, int <var>blockcnt</var>)</em></dt>
+<dd>
+<p>Change an entry in the dblist data structure; this changes the location
+of block number <var>blockcnt</var> of directory indoe <var>ino</var> to be block
+<var>blk</var>. 
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fdblist_005fiterate"></a>Function: <em>errcode_t</em> <strong>ext2fs_dblist_iterate</strong> <em>(ext2_dblist <var>dblist</var>, int (*func)(ext2_filsys <var>fs</var>, struct ext2_db_entry *<var>db_info</var>, void *<var>private</var>), void *<var>private</var>)</em></dt>
+<dd>
+<p>This iterator calls <var>func</var> for every entry in the dblist data structure.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fdblist_005fdir_005fiterate"></a>Function: <em>errcode_t</em> <strong>ext2fs_dblist_dir_iterate</strong> <em>(ext2_dblist <var>dblist</var>, int flags, char *<var>block_buf</var>, int (*func)(ext2_ino_t <var>dir</var>, int  <var>entry</var>, struct ext2_dir_entry *<var>dirent</var>, int <var>offset</var>, int <var>blocksize</var>, char *<var>buf</var>, void *<var>private</var>), void *<var>private</var>)</em></dt>
+<dd>
+<p>This iterator takes reads in the directory block indicated in each
+dblist entry, and calls <var>func</var> for each directory entry in each
+directory block.  If <var>dblist</var> contains all the directory blocks in a
+filesystem, this function provides a convenient way to iterate over all
+directory entries for that filesystem.
+</p></dd></dl>
+
+
+<hr>
+<a name="Inode-count-functions"></a>
+<div class="header">
+<p>
+Previous: <a href="#Directory_002dblock-list-management" accesskey="p" rel="prev">Directory-block list management</a>, Up: <a href="#EXT2-data-abstractions" accesskey="u" rel="up">EXT2 data abstractions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Inode-count-functions-1"></a>
+<h4 class="subsection">2.6.3 Inode count functions</h4>
+
+<p>The icount abstraction is a specialized data type used by <code>e2fsck</code>
+to store how many times a particular inode is referenced by the
+filesystem.  This is used twice; once to store the actual number of times
+that the inode is reference; and once to store the claimed number of times
+the inode is referenced according to the inode structure.
+</p>
+<p>This abstraction is designed to be extremely efficient for storing this
+sort of information, by taking advantage of the following properties of
+inode counts, namely (1) inode counts are very often zero (because
+the inode is currrently not in use), and (2) many files have a inode
+count of 1 (because they are a file which has no additional hard links).
+</p>
+<dl>
+<dt><a name="index-ext2fs_005fcreate_005ficount2"></a>Function: <em>errcode_t</em> <strong>ext2fs_create_icount2</strong> <em>(ext2_filsys <var>fs</var>, int <var>flags</var>, int <var>size</var>, ext2_icount_t <var>hint</var>, ext2_icount_t *<var>ret</var>)</em></dt>
+<dd>
+<p>Creates an icount stucture for a filesystem <var>fs</var>, with initial space
+for <var>size</var> inodes whose count is greater than 1.  The <var>flags</var>
+parameter is either 0 or <code>EXT2_ICOUNT_OPT_INCREMENT</code>, which
+indicates that icount structure should be able to increment inode counts
+quickly.  The icount structure is returned in <var>ret</var>.  The returned
+icount structure initially has a count of zero for all inodes.
+</p>
+<p>The <var>hint</var> parameter allows the caller to optionally pass in another
+icount structure which is used to initialize the array of inodes whose
+count is greater than 1.  It is used purely as a speed optimization so
+that the icount structure can determine in advance which inodes are
+likely to contain a count grater than 1.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ffree_005ficount"></a>Function: <em>void</em> <strong>ext2fs_free_icount</strong> <em>(ext2_icount_t <var>icount</var>)</em></dt>
+<dd>
+<p>Frees an icount structure.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ficount_005ffetch"></a>Function: <em>errcode_t</em> <strong>ext2fs_icount_fetch</strong> <em>(ext2_icount_t <var>icount</var>, ext2_ino_t <var>ino</var>, __u16 *<var>ret</var>)</em></dt>
+<dd>
+<p>Returns in <var>ret</var> fetches the count for a particular inode <var>ino</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ficount_005fincrement"></a>Function: <em>errcode_t</em> <strong>ext2fs_icount_increment</strong> <em>(ext2_icount_t <var>icount</var>, ext2_ino_t <var>ino</var>, __u16 *<var>ret</var>)</em></dt>
+<dd>
+<p>Increments the ref count for inode <var>ino</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ficount_005fdecrement"></a>Function: <em>errcode_t</em> <strong>ext2fs_icount_decrement</strong> <em>(ext2_icount_t <var>icount</var>, ext2_ino_t <var>ino</var>, __u16 *<var>ret</var>)</em></dt>
+<dd>
+<p>Decrements the ref count for inode <var>ino</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ficount_005fstore"></a>Function: <em>errcode_t</em> <strong>ext2fs_icount_store</strong> <em>(ext2_icount_t <var>icount</var>, ext2_ino_t <var>ino</var>, __u16 <var>count</var>)</em></dt>
+<dd>
+<p>Sets the reference count for inode <var>ino</var> to be <var>count</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fget_005ficount_005fsize"></a>Function: <em>ext2_ino_t</em> <strong>ext2fs_get_icount_size</strong> <em>(ext2_icount_t <var>icount</var>)</em></dt>
+<dd>
+<p>Returns the current number of inodes in <var>icount</var> which has a count
+greater than 1.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005ficount_005fvalidate"></a>Function: <em>errcode_t</em> <strong>ext2fs_icount_validate</strong> <em>(ext2_icount_t <var>icount</var>, FILE *<var>f</var>)</em></dt>
+<dd>
+<p>Validates the internal rep invariant of <var>icount</var>; if there are any
+problems, print out debugging information to <var>f</var>.  This function is
+intended for debugging and testing use only.
+</p></dd></dl>
+
+
+
+<hr>
+<a name="Byte_002dswapping-functions"></a>
+<div class="header">
+<p>
+Next: <a href="#Other-functions" accesskey="n" rel="next">Other functions</a>, Previous: <a href="#EXT2-data-abstractions" accesskey="p" rel="prev">EXT2 data abstractions</a>, Up: <a href="#EXT2FS-Library-Functions" accesskey="u" rel="up">EXT2FS Library Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Byte_002dswapping-functions-1"></a>
+<h3 class="section">2.7 Byte-swapping functions</h3>
+
+<dl>
+<dt><a name="index-ext2fs_005fswap_005fsuper"></a>Function: <em>void</em> <strong>ext2fs_swap_super</strong> <em>(struct ext2_super_block * <var>super</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fswap_005fgroup_005fdesc"></a>Function: <em>void</em> <strong>ext2fs_swap_group_desc</strong> <em>(struct ext2_group_desc *<var>gdp</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fswap_005finode"></a>Function: <em>void</em> <strong>ext2fs_swap_inode</strong> <em>(ext2_filsys <var>fs</var>, struct ext2_inode *<var>to</var>, struct ext2_inode *<var>from</var>, int <var>hostorder</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fnative_005fflag"></a>Function: <em>int</em> <strong>ext2fs_native_flag</strong> <em>(void)</em></dt>
+</dl>
+
+
+
+<hr>
+<a name="Other-functions"></a>
+<div class="header">
+<p>
+Previous: <a href="#Byte_002dswapping-functions" accesskey="p" rel="prev">Byte-swapping functions</a>, Up: <a href="#EXT2FS-Library-Functions" accesskey="u" rel="up">EXT2FS Library Functions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Other-functions-1"></a>
+<h3 class="section">2.8 Other functions</h3>
+
+<p>/* alloc.c */
+</p><dl>
+<dt><a name="index-ext2fs_005fnew_005finode"></a>Function: <em>errcode_t</em> <strong>ext2fs_new_inode</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>dir</var>, int <var>mode</var>, ext2fs_inode_bitmap <var>map</var>, ext2_ino_t *<var>ret</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fnew_005fblock"></a>Function: <em>errcode_t</em> <strong>ext2fs_new_block</strong> <em>(ext2_filsys <var>fs</var>, blk_t <var>goal</var>, ext2fs_block_bitmap <var>map</var>, blk_t *<var>ret</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fget_005ffree_005fblocks"></a>Function: <em>errcode_t</em> <strong>ext2fs_get_free_blocks</strong> <em>(ext2_filsys <var>fs</var>, blk_t <var>start</var>, blk_t <var>finish</var>, int <var>num</var>, ext2fs_block_bitmap <var>map</var>, blk_t *<var>ret</var>)</em></dt>
+</dl>
+
+<p>/* check_desc.c */
+</p><dl>
+<dt><a name="index-ext2fs_005fcheck_005fdesc"></a>Function: <em>errcode_t</em> <strong>ext2fs_check_desc</strong> <em>(ext2_filsys <var>fs</var>)</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fget_005fnum_005fdirs"></a>Function: <em>errcode_t</em> <strong>ext2fs_get_num_dirs</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t *<var>ret_num_dirs</var>)</em></dt>
+</dl>
+
+
+<p>/* getsize.c */
+</p><dl>
+<dt><a name="index-ext2fs_005fget_005fdevice_005fsize"></a>Function: <em>errcode_t</em> <strong>ext2fs_get_device_size</strong> <em>(const char *<var>file</var>, int <var>blocksize</var>, blk_t *<var>retblocks</var>)</em></dt>
+</dl>
+
+
+<p>/* ismounted.c */
+</p><dl>
+<dt><a name="index-ext2fs_005fcheck_005fif_005fmounted"></a>Function: <em>errcode_t</em> <strong>ext2fs_check_if_mounted</strong> <em>(const char *<var>file</var>, int *<var>mount_flags</var>)</em></dt>
+</dl>
+
+<p>/* version.c */
+</p>
+<dl>
+<dt><a name="index-ext2fs_005fget_005flibrary_005fversion"></a>Function: <em>int</em> <strong>ext2fs_get_library_version</strong> <em>(const char **<var>ver_string</var>, const char **<var>date_string</var>)</em></dt>
+<dd>
+<p>This function returns the current version of the ext2 library.  The
+return value contains an integer version code, which consists of the
+major version number of the library multiplied by 100, plus the minor
+version number of the library.  Hence, if the library version is 1.08,
+the returned value will be 108.
+</p>
+<p>If <var>ver_string</var> and/or <var>date_string</var> are non-NULL, they will be
+set to point at a constant string containing the library version and/or
+release date, respectively.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fparse_005fversion_005fstring"></a>Function: <em>int</em> <strong>ext2fs_parse_version_string</strong> <em>(const char *<var>ver_string</var>)</em></dt>
+<dd>
+<p>This function takes a version string which may included in an
+application and returns a version code using the same algorithm used by
+<code>ext2fs_get_library_version</code>.  It can be used by programs included
+in the <code>e2fsprogs</code> distribution to assure that they are using an
+up-to-date ext2 shared library.
+</p></dd></dl>
+
+<p>/* inline functions */
+</p><dl>
+<dt><a name="index-ext2fs_005fgroup_005fof_005fblk"></a>Function: <em>int</em> <strong>ext2fs_group_of_blk</strong> <em>(ext2_filsys <var>fs</var>, blk_t <var>blk</var>)</em></dt>
+<dd>
+<p>This function returns the block group which contains the block <var>blk</var>.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-ext2fs_005fgroup_005fof_005fino"></a>Function: <em>int</em> <strong>ext2fs_group_of_ino</strong> <em>(ext2_filsys <var>fs</var>, ext2_ino_t <var>ino</var>)</em></dt>
+<dd>
+<p>This function returns the block group which contains the inode <var>ino</var>.
+</p></dd></dl>
+
+
+
+<hr>
+<a name="Concept-Index"></a>
+<div class="header">
+<p>
+Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Previous: <a href="#EXT2FS-Library-Functions" accesskey="p" rel="prev">EXT2FS Library Functions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Concept-Index-1"></a>
+<h2 class="unnumbered">Concept Index</h2>
+
+
+<hr>
+<a name="Function-Index"></a>
+<div class="header">
+<p>
+Previous: <a href="#Concept-Index" accesskey="p" rel="prev">Concept Index</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Function-and-Type-Index"></a>
+<h2 class="unnumbered">Function and Type Index</h2>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-Index_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Function-Index_fn_letter-E">E</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fadd_005fdir_005fblock"><code>ext2fs_add_dir_block</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Directory_002dblock-list-management">Directory-block list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fallocate_005fblock_005fbitmap"><code>ext2fs_allocate_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Allocating-Bitmaps">Allocating Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fallocate_005fgeneric_005fbitmap"><code>ext2fs_allocate_generic_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Allocating-Bitmaps">Allocating Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fallocate_005finode_005fbitmap"><code>ext2fs_allocate_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Allocating-Bitmaps">Allocating Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fallocate_005ftables"><code>ext2fs_allocate_tables</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Initializing-a-filesystem">Initializing a filesystem</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fbadblocks_005flist_005fadd"><code>ext2fs_badblocks_list_add</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fbadblocks_005flist_005fcreate"><code>ext2fs_badblocks_list_create</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fbadblocks_005flist_005ffree"><code>ext2fs_badblocks_list_free</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fbadblocks_005flist_005fiterate"><code>ext2fs_badblocks_list_iterate</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fbadblocks_005flist_005fiterate_005fbegin"><code>ext2fs_badblocks_list_iterate_begin</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fbadblocks_005flist_005fiterate_005fend"><code>ext2fs_badblocks_list_iterate_end</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fbadblocks_005flist_005ftest"><code>ext2fs_badblocks_list_test</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fblock_005fiterate"><code>ext2fs_block_iterate</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Iterating-over-blocks-in-an-inode">Iterating over blocks in an inode</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fblock_005fiterate2"><code>ext2fs_block_iterate2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Iterating-over-blocks-in-an-inode">Iterating over blocks in an inode</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fcheck_005fdesc"><code>ext2fs_check_desc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fcheck_005fdirectory"><code>ext2fs_check_directory</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-Convenience-Functions">Inode Convenience Functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fcheck_005fif_005fmounted"><code>ext2fs_check_if_mounted</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fclear_005fblock_005fbitmap"><code>ext2fs_clear_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Clearing-Bitmaps">Clearing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fclear_005finode_005fbitmap"><code>ext2fs_clear_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Clearing-Bitmaps">Clearing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fclose"><code>ext2fs_close</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Closing-and-flushing-out-changes">Closing and flushing out changes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fclose_005finode_005fscan"><code>ext2fs_close_inode_scan</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Iterating-over-inodes-in-a-filesystem">Iterating over inodes in a filesystem</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fcompare_005fblock_005fbitmap"><code>ext2fs_compare_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Comparing-bitmaps">Comparing bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fcompare_005finode_005fbitmap"><code>ext2fs_compare_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Comparing-bitmaps">Comparing bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fcreate_005ficount2"><code>ext2fs_create_icount2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-count-functions">Inode count functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fdblist_005fdir_005fiterate"><code>ext2fs_dblist_dir_iterate</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Directory_002dblock-list-management">Directory-block list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fdblist_005fiterate"><code>ext2fs_dblist_iterate</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Directory_002dblock-list-management">Directory-block list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fdir_005fiterate"><code>ext2fs_dir_iterate</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Iterating-over-a-directory">Iterating over a directory</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fexpand_005fdir"><code>ext2fs_expand_dir</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Creating-and-expanding-directories">Creating and expanding directories</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffast_005fmark_005fblock_005fbitmap"><code>ext2fs_fast_mark_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffast_005fmark_005finode_005fbitmap"><code>ext2fs_fast_mark_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffast_005ftest_005fblock_005fbitmap"><code>ext2fs_fast_test_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffast_005ftest_005finode_005fbitmap"><code>ext2fs_fast_test_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffast_005funmark_005fblock_005fbitmap"><code>ext2fs_fast_unmark_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffast_005funmark_005finode_005fbitmap"><code>ext2fs_fast_unmark_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fclose"><code>ext2fs_file_close</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#File-handle-manipulation">File handle manipulation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fflush"><code>ext2fs_file_flush</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#File-handle-manipulation">File handle manipulation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fget_005ffs"><code>ext2fs_file_get_fs</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#File-handle-manipulation">File handle manipulation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fget_005flsize"><code>ext2fs_file_get_lsize</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Getting-the-file-size">Getting the file size</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fget_005fsize"><code>ext2fs_file_get_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Getting-the-file-size">Getting the file size</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fllseek"><code>ext2fs_file_llseek</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Changing-the-file-offset">Changing the file offset</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005flseek"><code>ext2fs_file_lseek</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Changing-the-file-offset">Changing the file offset</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fopen"><code>ext2fs_file_open</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#File-handle-manipulation">File handle manipulation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fopen2"><code>ext2fs_file_open2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#File-handle-manipulation">File handle manipulation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fread"><code>ext2fs_file_read</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-writing-data">Reading and writing data</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffile_005fwrite"><code>ext2fs_file_write</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-writing-data">Reading and writing data</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fflush"><code>ext2fs_flush</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Closing-and-flushing-out-changes">Closing and flushing out changes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffollow_005flink"><code>ext2fs_follow_link</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Looking-up-filenames">Looking up filenames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffree"><code>ext2fs_free</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Closing-and-flushing-out-changes">Closing and flushing out changes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffree_005fblock_005fbitmap"><code>ext2fs_free_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Free-bitmaps">Free bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffree_005fdblist"><code>ext2fs_free_dblist</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Directory_002dblock-list-management">Directory-block list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffree_005fgeneric_005fbitmap"><code>ext2fs_free_generic_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Free-bitmaps">Free bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffree_005ficount"><code>ext2fs_free_icount</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-count-functions">Inode count functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffree_005finode_005fbitmap"><code>ext2fs_free_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Free-bitmaps">Free bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffudge_005fblock_005fbitmap_005fend"><code>ext2fs_fudge_block_bitmap_end</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Bitmaps">Modifying Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ffudge_005finode_005fbitmap_005fend"><code>ext2fs_fudge_inode_bitmap_end</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modifying-Bitmaps">Modifying Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005fblocks"><code>ext2fs_get_blocks</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-Convenience-Functions">Inode Convenience Functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005fblock_005fbitmap_005fend"><code>ext2fs_get_block_bitmap_end</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005fblock_005fbitmap_005fstart"><code>ext2fs_get_block_bitmap_start</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005fdevice_005fsize"><code>ext2fs_get_device_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005ffree_005fblocks"><code>ext2fs_get_free_blocks</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005ficount_005fsize"><code>ext2fs_get_icount_size</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-count-functions">Inode count functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005finode_005fbitmap_005fend"><code>ext2fs_get_inode_bitmap_end</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005finode_005fbitmap_005fstart"><code>ext2fs_get_inode_bitmap_start</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005flibrary_005fversion"><code>ext2fs_get_library_version</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005fnext_005finode"><code>ext2fs_get_next_inode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Iterating-over-inodes-in-a-filesystem">Iterating over inodes in a filesystem</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005fnum_005fdirs"><code>ext2fs_get_num_dirs</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fget_005fpathname"><code>ext2fs_get_pathname</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Translating-inode-numbers-to-filenames">Translating inode numbers to filenames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fgroup_005fof_005fblk"><code>ext2fs_group_of_blk</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fgroup_005fof_005fino"><code>ext2fs_group_of_ino</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ficount_005fdecrement"><code>ext2fs_icount_decrement</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-count-functions">Inode count functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ficount_005ffetch"><code>ext2fs_icount_fetch</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-count-functions">Inode count functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ficount_005fincrement"><code>ext2fs_icount_increment</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-count-functions">Inode count functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ficount_005fstore"><code>ext2fs_icount_store</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-count-functions">Inode count functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ficount_005fvalidate"><code>ext2fs_icount_validate</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-count-functions">Inode count functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005finitialize"><code>ext2fs_initialize</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Initializing-a-filesystem">Initializing a filesystem</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005finit_005fdblist"><code>ext2fs_init_dblist</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Directory_002dblock-list-management">Directory-block list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005finode_005fhas_005fvalid_005fblocks"><code>ext2fs_inode_has_valid_blocks</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Inode-Convenience-Functions">Inode Convenience Functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005finode_005fscan_005fflags"><code>ext2fs_inode_scan_flags</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Iterating-over-inodes-in-a-filesystem">Iterating over inodes in a filesystem</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005finode_005fscan_005fgoto_005fblockgroup"><code>ext2fs_inode_scan_goto_blockgroup</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Iterating-over-inodes-in-a-filesystem">Iterating over inodes in a filesystem</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005flink"><code>ext2fs_link</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Creating-and-removing-directory-entries">Creating and removing directory entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005flookup"><code>ext2fs_lookup</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Looking-up-filenames">Looking up filenames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fmark_005fbb_005fdirty"><code>ext2fs_mark_bb_dirty</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fmark_005fblock_005fbitmap"><code>ext2fs_mark_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fmark_005fchanged"><code>ext2fs_mark_changed</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fmark_005fib_005fdirty"><code>ext2fs_mark_ib_dirty</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fmark_005finode_005fbitmap"><code>ext2fs_mark_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fmark_005fsuper_005fdirty"><code>ext2fs_mark_super_dirty</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fmark_005fvalid"><code>ext2fs_mark_valid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fmkdir"><code>ext2fs_mkdir</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Creating-and-expanding-directories">Creating and expanding directories</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fnamei"><code>ext2fs_namei</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Looking-up-filenames">Looking up filenames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fnamei_005ffollow"><code>ext2fs_namei_follow</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Looking-up-filenames">Looking up filenames</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fnative_005fflag"><code>ext2fs_native_flag</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Byte_002dswapping-functions">Byte-swapping functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fnew_005fblock"><code>ext2fs_new_block</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fnew_005fdir_005fblock"><code>ext2fs_new_dir_block</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Directory-block-functions">Directory block functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fnew_005finode"><code>ext2fs_new_inode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fopen"><code>ext2fs_open</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Opening-an-ext2-filesystem">Opening an ext2 filesystem</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fopen_005finode_005fscan"><code>ext2fs_open_inode_scan</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Iterating-over-inodes-in-a-filesystem">Iterating over inodes in a filesystem</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fparse_005fversion_005fstring"><code>ext2fs_parse_version_string</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Other-functions">Other functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fread_005fbb_005fFILE"><code>ext2fs_read_bb_FILE</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fread_005fbb_005finode"><code>ext2fs_read_bb_inode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fread_005fbitmaps"><code>ext2fs_read_bitmaps</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-Writing-Bitmaps">Reading and Writing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fread_005fblock_005fbitmap"><code>ext2fs_read_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-Writing-Bitmaps">Reading and Writing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fread_005fdir_005fblock"><code>ext2fs_read_dir_block</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Directory-block-functions">Directory block functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fread_005finode"><code>ext2fs_read_inode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-writing-inodes">Reading and writing inodes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fread_005finode_005fbitmap"><code>ext2fs_read_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-Writing-Bitmaps">Reading and Writing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fresize_005fblock_005fbitmap"><code>ext2fs_resize_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resizing-Bitmaps">Resizing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fresize_005fgeneric_005fbitmap"><code>ext2fs_resize_generic_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resizing-Bitmaps">Resizing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fresize_005finode_005fbitmap"><code>ext2fs_resize_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resizing-Bitmaps">Resizing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fset_005fdir_005fblock"><code>ext2fs_set_dir_block</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Directory_002dblock-list-management">Directory-block list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fset_005finode_005fcallback"><code>ext2fs_set_inode_callback</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Iterating-over-inodes-in-a-filesystem">Iterating over inodes in a filesystem</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fswap_005fgroup_005fdesc"><code>ext2fs_swap_group_desc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Byte_002dswapping-functions">Byte-swapping functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fswap_005finode"><code>ext2fs_swap_inode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Byte_002dswapping-functions">Byte-swapping functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fswap_005fsuper"><code>ext2fs_swap_super</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Byte_002dswapping-functions">Byte-swapping functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ftest_005fbb_005fdirty"><code>ext2fs_test_bb_dirty</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ftest_005fblock_005fbitmap"><code>ext2fs_test_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ftest_005fchanged"><code>ext2fs_test_changed</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ftest_005fib_005fdirty"><code>ext2fs_test_ib_dirty</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ftest_005finode_005fbitmap"><code>ext2fs_test_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005ftest_005fvalid"><code>ext2fs_test_valid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005funlink"><code>ext2fs_unlink</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Creating-and-removing-directory-entries">Creating and removing directory entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005funmark_005fblock_005fbitmap"><code>ext2fs_unmark_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005funmark_005finode_005fbitmap"><code>ext2fs_unmark_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bitmap-Operations">Bitmap Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005funmark_005fvalid"><code>ext2fs_unmark_valid</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Filesystem-flag-functions">Filesystem flag functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fupdate_005fbb_005finode"><code>ext2fs_update_bb_inode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Badblocks-list-management">Badblocks list management</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fwrite_005fbitmaps"><code>ext2fs_write_bitmaps</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-Writing-Bitmaps">Reading and Writing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fwrite_005fblock_005fbitmap"><code>ext2fs_write_block_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-Writing-Bitmaps">Reading and Writing Bitmaps</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fwrite_005fdir_005fblock"><code>ext2fs_write_dir_block</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Directory-block-functions">Directory block functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fwrite_005finode"><code>ext2fs_write_inode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-writing-inodes">Reading and writing inodes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ext2fs_005fwrite_005finode_005fbitmap"><code>ext2fs_write_inode_bitmap</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reading-and-Writing-Bitmaps">Reading and Writing Bitmaps</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-Index_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+</td></tr></table>
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-Introduction-to-the-EXT2FS-Library-1" href="#Introduction-to-the-EXT2FS-Library">1 Introduction to the EXT2FS Library</a></li>
+  <li><a name="toc-EXT2FS-Library-Functions-1" href="#EXT2FS-Library-Functions">2 EXT2FS Library Functions</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Filesystem_002dlevel-functions-1" href="#Filesystem_002dlevel-functions">2.1 Filesystem-level functions</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Opening-an-ext2-filesystem-1" href="#Opening-an-ext2-filesystem">2.1.1 Opening an ext2 filesystem</a></li>
+      <li><a name="toc-Closing-and-flushing-out-changes-1" href="#Closing-and-flushing-out-changes">2.1.2 Closing and flushing out changes</a></li>
+      <li><a name="toc-Initializing-a-filesystem-1" href="#Initializing-a-filesystem">2.1.3 Initializing a filesystem</a></li>
+      <li><a name="toc-Filesystem-flag-functions-1" href="#Filesystem-flag-functions">2.1.4 Filesystem flag functions</a></li>
+    </ul></li>
+    <li><a name="toc-File-I_002fO-Functions-1" href="#File-I_002fO-Functions">2.2 File I/O Functions</a>
+    <ul class="no-bullet">
+      <li><a name="toc-File-handle-manipulation-1" href="#File-handle-manipulation">2.2.1 File handle manipulation</a></li>
+      <li><a name="toc-Reading-and-writing-data-1" href="#Reading-and-writing-data">2.2.2 Reading and writing data</a></li>
+      <li><a name="toc-Changing-the-file-offset-1" href="#Changing-the-file-offset">2.2.3 Changing the file offset</a></li>
+      <li><a name="toc-Getting-the-file-size-1" href="#Getting-the-file-size">2.2.4 Getting the file size</a></li>
+    </ul></li>
+    <li><a name="toc-Inode-Functions-1" href="#Inode-Functions">2.3 Inode Functions</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Reading-and-writing-inodes-1" href="#Reading-and-writing-inodes">2.3.1 Reading and writing inodes</a></li>
+      <li><a name="toc-Iterating-over-inodes-in-a-filesystem-1" href="#Iterating-over-inodes-in-a-filesystem">2.3.2 Iterating over inodes in a filesystem</a></li>
+      <li><a name="toc-Iterating-over-blocks-in-an-inode-1" href="#Iterating-over-blocks-in-an-inode">2.3.3 Iterating over blocks in an inode</a></li>
+      <li><a name="toc-Convenience-functions-for-Inodes" href="#Inode-Convenience-Functions">2.3.4 Convenience functions for Inodes</a></li>
+    </ul></li>
+    <li><a name="toc-Directory-functions-1" href="#Directory-functions">2.4 Directory functions</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Directory-block-functions-1" href="#Directory-block-functions">2.4.1 Directory block functions</a></li>
+      <li><a name="toc-Iterating-over-a-directory-1" href="#Iterating-over-a-directory">2.4.2 Iterating over a directory</a></li>
+      <li><a name="toc-Creating-and-expanding-directories-1" href="#Creating-and-expanding-directories">2.4.3 Creating and expanding directories</a></li>
+      <li><a name="toc-Creating-and-removing-directory-entries-1" href="#Creating-and-removing-directory-entries">2.4.4 Creating and removing directory entries</a></li>
+      <li><a name="toc-Looking-up-filenames-1" href="#Looking-up-filenames">2.4.5 Looking up filenames</a></li>
+      <li><a name="toc-Translating-inode-numbers-to-filenames-1" href="#Translating-inode-numbers-to-filenames">2.4.6 Translating inode numbers to filenames</a></li>
+    </ul></li>
+    <li><a name="toc-Bitmap-Functions-1" href="#Bitmap-Functions">2.5 Bitmap Functions</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Reading-and-Writing-Bitmaps-1" href="#Reading-and-Writing-Bitmaps">2.5.1 Reading and Writing Bitmaps</a></li>
+      <li><a name="toc-Allocating-Bitmaps-1" href="#Allocating-Bitmaps">2.5.2 Allocating Bitmaps</a></li>
+      <li><a name="toc-Freeing-bitmaps" href="#Free-bitmaps">2.5.3 Freeing bitmaps</a></li>
+      <li><a name="toc-Bitmap-Operations-1" href="#Bitmap-Operations">2.5.4 Bitmap Operations</a></li>
+      <li><a name="toc-Comparing-bitmaps-1" href="#Comparing-bitmaps">2.5.5 Comparing bitmaps</a></li>
+      <li><a name="toc-Modifying-Bitmaps-1" href="#Modifying-Bitmaps">2.5.6 Modifying Bitmaps</a></li>
+      <li><a name="toc-Resizing-Bitmaps-1" href="#Resizing-Bitmaps">2.5.7 Resizing Bitmaps</a></li>
+      <li><a name="toc-Clearing-Bitmaps-1" href="#Clearing-Bitmaps">2.5.8 Clearing Bitmaps</a></li>
+    </ul></li>
+    <li><a name="toc-EXT2-data-abstractions-1" href="#EXT2-data-abstractions">2.6 EXT2 data abstractions</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Badblocks-list-management-1" href="#Badblocks-list-management">2.6.1 Badblocks list management</a></li>
+      <li><a name="toc-Directory_002dblock-list-management-1" href="#Directory_002dblock-list-management">2.6.2 Directory-block list management</a></li>
+      <li><a name="toc-Inode-count-functions-1" href="#Inode-count-functions">2.6.3 Inode count functions</a></li>
+    </ul></li>
+    <li><a name="toc-Byte_002dswapping-functions-1" href="#Byte_002dswapping-functions">2.7 Byte-swapping functions</a></li>
+    <li><a name="toc-Other-functions-1" href="#Other-functions">2.8 Other functions</a></li>
+  </ul></li>
+  <li><a name="toc-Concept-Index-1" href="#Concept-Index">Concept Index</a></li>
+  <li><a name="toc-Function-and-Type-Index" href="#Function-Index">Function and Type Index</a></li>
+</ul>
+</div>
+
+<hr>
+
+
+
+</body>
+</html>

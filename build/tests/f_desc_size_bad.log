@@ -1,0 +1,13 @@
+mke2fs 1.43-WIP (29-Mar-2015)
+Creating filesystem with 2048 1k blocks and 32 inodes
+Filesystem UUID: ff0b5d41-027f-4a98-869a-74850d642de5
+Superblock backups stored on blocks: 
+	513, 1537
+
+Allocating group tables:    done                            
+Writing inode tables:    done                            
+Writing superblocks and filesystem accounting information:    done
+
+This filesystem will be automatically checked every 23 mounts or
+180 days, whichever comes first.  Use tune2fs -c or -i to override.
+debugfs 1.43-WIP (29-Mar-2015)

@@ -1,0 +1,50 @@
+mke2fs -q -F -o Linux -b 1024 /tmp/e2fsprogs-tmp-t_ext_jnl_rm.rb4pd3
+debugfs add journal device/UUID
+debugfs 1.43-WIP (29-Mar-2015)
+debugfs: feature has_journal
+Filesystem features: has_journal ext_attr resize_inode dir_index filetype sparse_super
+debugfs: ssv journal_dev 0x9999
+debugfs: ssv journal_uuid 1db3f677-6832-4adb-bafc-8e4059c30a33
+tune2fs -f -O ^has_journal /tmp/e2fsprogs-tmp-t_ext_jnl_rm.rb4pd3
+tune2fs 1.43-WIP (29-Mar-2015)
+Journal removed
+dumpe2fs 1.43-WIP (29-Mar-2015)
+Filesystem volume name:   <none>
+Last mounted on:          <not available>
+Filesystem UUID:          67522364-9677-451f-ba88-05a74d3867f8
+Filesystem magic number:  0xEF53
+Filesystem revision #:    1 (dynamic)
+Filesystem features:      ext_attr resize_inode dir_index filetype sparse_super
+Filesystem flags:         signed_directory_hash 
+Default mount options:    (none)
+Filesystem state:         clean
+Errors behavior:          Continue
+Filesystem OS type:       Linux
+Inode count:              64
+Block count:              512
+Reserved block count:     25
+Free blocks:              484
+Free inodes:              53
+First block:              1
+Block size:               1024
+Fragment size:            1024
+Reserved GDT blocks:      1
+Blocks per group:         8192
+Fragments per group:      8192
+Inodes per group:         64
+Inode blocks per group:   8
+Filesystem created:       Thu Apr  9 08:55:23 2015
+Last mount time:          n/a
+Last write time:          Thu Apr  9 08:55:23 2015
+Mount count:              0
+Maximum mount count:      27
+Last checked:             Thu Apr  9 08:55:23 2015
+Check interval:           15552000 (6 months)
+Next check after:         Tue Oct  6 08:55:23 2015
+Reserved blocks uid:      0 (user root)
+Reserved blocks gid:      0 (group root)
+First inode:              11
+Inode size:	          128
+Default directory hash:   half_md4
+Directory Hash Seed:      12027339-7088-4aea-a01c-2fb5f7104685
+
