@@ -13,7 +13,7 @@
 
 m4_ifndef([AC_CONFIG_MACRO_DIRS], [m4_defun([_AM_CONFIG_MACRO_DIRS], [])m4_defun([AC_CONFIG_MACRO_DIRS], [_AM_CONFIG_MACRO_DIRS($@)])])
 # codeset.m4 serial 5 (gettext-0.18.2)
-dnl Copyright (C) 2000-2002, 2006, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2000-2002, 2006, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -38,7 +38,7 @@ AC_DEFUN([AM_LANGINFO_CODESET],
 
 dnl 'extern inline' a la ISO C99.
 
-dnl Copyright 2012-2013 Free Software Foundation, Inc.
+dnl Copyright 2012-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -57,27 +57,41 @@ AC_DEFUN([gl_EXTERN_INLINE],
    'reference to static identifier "f" in extern inline function'.
    This bug was observed with Sun C 5.12 SunOS_i386 2011/11/16.
 
-   Suppress the use of extern inline on Apple's platforms, as Libc at least
-   through Libc-825.26 (2013-04-09) is incompatible with it; see, e.g.,
+   Suppress the use of extern inline on problematic Apple configurations.
+   OS X 10.8 and earlier mishandle it; see, e.g.,
    <http://lists.gnu.org/archive/html/bug-gnulib/2012-12/msg00023.html>.
+   OS X 10.9 has a macro __header_inline indicating the bug is fixed for C and
+   for clang but remains for g++; see <http://trac.macports.org/ticket/41033>.
    Perhaps Apple will fix this some day.  */
+#if (defined __APPLE__ \
+     && (defined __header_inline \
+         ? (defined __cplusplus && defined __GNUC_STDC_INLINE__ \
+            && ! defined __clang__) \
+         : ((! defined _DONT_USE_CTYPE_INLINE_ \
+             && (defined __GNUC__ || defined __cplusplus)) \
+            || (defined _FORTIFY_SOURCE && 0 < _FORTIFY_SOURCE \
+                && defined __GNUC__ && ! defined __cplusplus))))
+# define _GL_EXTERN_INLINE_APPLE_BUG
+#endif
 #if ((__GNUC__ \
       ? defined __GNUC_STDC_INLINE__ && __GNUC_STDC_INLINE__ \
       : (199901L <= __STDC_VERSION__ \
          && !defined __HP_cc \
          && !(defined __SUNPRO_C && __STDC__))) \
-     && !defined __APPLE__)
+     && !defined _GL_EXTERN_INLINE_APPLE_BUG)
 # define _GL_INLINE inline
 # define _GL_EXTERN_INLINE extern inline
+# define _GL_EXTERN_INLINE_IN_USE
 #elif (2 < __GNUC__ + (7 <= __GNUC_MINOR__) && !defined __STRICT_ANSI__ \
-       && !defined __APPLE__)
-# if __GNUC_GNU_INLINE__
+       && !defined _GL_EXTERN_INLINE_APPLE_BUG)
+# if defined __GNUC_GNU_INLINE__ && __GNUC_GNU_INLINE__
    /* __gnu_inline__ suppresses a GCC 4.2 diagnostic.  */
 #  define _GL_INLINE extern inline __attribute__ ((__gnu_inline__))
 # else
 #  define _GL_INLINE extern inline
 # endif
 # define _GL_EXTERN_INLINE extern
+# define _GL_EXTERN_INLINE_IN_USE
 #else
 # define _GL_INLINE static _GL_UNUSED
 # define _GL_EXTERN_INLINE static _GL_UNUSED
@@ -108,7 +122,7 @@ AC_DEFUN([gl_EXTERN_INLINE],
 ])
 
 # fcntl-o.m4 serial 4
-dnl Copyright (C) 2006, 2009-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2006, 2009-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -243,7 +257,7 @@ AC_DEFUN([gl_FCNTL_O_FLAGS],
 ])
 
 # gettext.m4 serial 66 (gettext-0.18.2)
-dnl Copyright (C) 1995-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 1995-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -645,7 +659,7 @@ dnl Usage: AM_GNU_GETTEXT_VERSION([gettext-version])
 AC_DEFUN([AM_GNU_GETTEXT_VERSION], [])
 
 # glibc2.m4 serial 3
-dnl Copyright (C) 2000-2002, 2004, 2008, 2010-2013 Free Software Foundation,
+dnl Copyright (C) 2000-2002, 2004, 2008, 2010-2014 Free Software Foundation,
 dnl Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
@@ -677,7 +691,7 @@ AC_DEFUN([gt_GLIBC2],
 )
 
 # glibc21.m4 serial 5
-dnl Copyright (C) 2000-2002, 2004, 2008, 2010-2013 Free Software Foundation,
+dnl Copyright (C) 2000-2002, 2004, 2008, 2010-2014 Free Software Foundation,
 dnl Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
@@ -712,7 +726,7 @@ AC_DEFUN([gl_GLIBC21],
 )
 
 # iconv.m4 serial 18 (gettext-0.18.2)
-dnl Copyright (C) 2000-2002, 2007-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2000-2002, 2007-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -981,7 +995,7 @@ size_t iconv();
 ])
 
 # intdiv0.m4 serial 6 (gettext-0.18.2)
-dnl Copyright (C) 2002, 2007-2008, 2010-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2002, 2007-2008, 2010-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -1068,8 +1082,8 @@ changequote([,])dnl
     [Define if integer division by zero raises signal SIGFPE.])
 ])
 
-# intl.m4 serial 25 (gettext-0.18.3)
-dnl Copyright (C) 1995-2013 Free Software Foundation, Inc.
+# intl.m4 serial 26 (gettext-0.19)
+dnl Copyright (C) 1995-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -1311,8 +1325,7 @@ AC_DEFUN([gt_INTL_SUBDIR_CORE],
 
   dnl intl/plural.c is generated from intl/plural.y. It requires bison,
   dnl because plural.y uses bison specific features. It requires at least
-  dnl bison-1.26 because earlier versions generate a plural.c that doesn't
-  dnl compile.
+  dnl bison-2.7 for %define api.pure.
   dnl bison is only needed for the maintainer (who touches plural.y). But in
   dnl order to avoid separate Makefiles or --enable-maintainer-mode, we put
   dnl the rule in general Makefile. Now, some people carelessly touch the
@@ -1329,7 +1342,7 @@ changequote(<<,>>)dnl
     ac_prog_version=`$INTLBISON --version 2>&1 | sed -n 's/^.*GNU Bison.* \([0-9]*\.[0-9.]*\).*$/\1/p'`
     case $ac_prog_version in
       '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
-      1.2[6-9]* | 1.[3-9][0-9]* | [2-9].*)
+      2.[7-9]* | [3-9].*)
 changequote([,])dnl
          ac_prog_version="$ac_prog_version, ok"; ac_verc_fail=no;;
       *) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
@@ -1342,7 +1355,7 @@ changequote([,])dnl
 ])
 
 # intlmacosx.m4 serial 5 (gettext-0.18.2)
-dnl Copyright (C) 2004-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2004-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -1399,7 +1412,7 @@ AC_DEFUN([gt_INTL_MACOSX],
 ])
 
 # intmax.m4 serial 6 (gettext-0.18.2)
-dnl Copyright (C) 2002-2005, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2002-2005, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -1436,7 +1449,7 @@ AC_DEFUN([gt_TYPE_INTMAX_T],
 ])
 
 # inttypes-pri.m4 serial 7 (gettext-0.18.2)
-dnl Copyright (C) 1997-2002, 2006, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 1997-2002, 2006, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -1479,7 +1492,7 @@ char *p = PRId32;
 ])
 
 # inttypes_h.m4 serial 10
-dnl Copyright (C) 1997-2004, 2006, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 1997-2004, 2006, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -1509,7 +1522,7 @@ AC_DEFUN([gl_AC_HEADER_INTTYPES_H],
 ])
 
 # lcmessage.m4 serial 7 (gettext-0.18.2)
-dnl Copyright (C) 1995-2002, 2004-2005, 2008-2013 Free Software Foundation,
+dnl Copyright (C) 1995-2002, 2004-2005, 2008-2014 Free Software Foundation,
 dnl Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
@@ -1545,7 +1558,7 @@ AC_DEFUN([gt_LC_MESSAGES],
 ])
 
 # lib-ld.m4 serial 6
-dnl Copyright (C) 1996-2003, 2009-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 1996-2003, 2009-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -1665,7 +1678,7 @@ AC_LIB_PROG_LD_GNU
 ])
 
 # lib-link.m4 serial 26 (gettext-0.18.2)
-dnl Copyright (C) 2001-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2001-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -2443,7 +2456,7 @@ AC_DEFUN([AC_LIB_LINKFLAGS_FROM_LIBS],
 ])
 
 # lib-prefix.m4 serial 7 (gettext-0.18)
-dnl Copyright (C) 2001-2005, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2001-2005, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -2668,7 +2681,7 @@ sixtyfour bits
 ])
 
 # lock.m4 serial 13 (gettext-0.18.2)
-dnl Copyright (C) 2005-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2005-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -2711,7 +2724,7 @@ return !x;
 AC_DEFUN([gl_PREREQ_LOCK], [:])
 
 # longlong.m4 serial 17
-dnl Copyright (C) 1999-2007, 2009-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 1999-2007, 2009-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -2825,7 +2838,7 @@ AC_DEFUN([_AC_TYPE_LONG_LONG_SNIPPET],
 ])
 
 # nls.m4 serial 5 (gettext-0.18)
-dnl Copyright (C) 1995-2003, 2005-2006, 2008-2013 Free Software Foundation,
+dnl Copyright (C) 1995-2003, 2005-2006, 2008-2014 Free Software Foundation,
 dnl Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
@@ -3072,8 +3085,8 @@ AS_VAR_COPY([$1], [pkg_cv_][$1])
 AS_VAR_IF([$1], [""], [$5], [$4])dnl
 ])# PKG_CHECK_VAR
 
-# po.m4 serial 21 (gettext-0.18.3)
-dnl Copyright (C) 1995-2013 Free Software Foundation, Inc.
+# po.m4 serial 22 (gettext-0.19)
+dnl Copyright (C) 1995-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -3104,7 +3117,7 @@ AC_DEFUN([AM_PO_SUBDIRS],
 
   dnl Release version of the gettext macros. This is used to ensure that
   dnl the gettext macros and po/Makefile.in.in are in sync.
-  AC_SUBST([GETTEXT_MACRO_VERSION], [0.18])
+  AC_SUBST([GETTEXT_MACRO_VERSION], [0.19])
 
   dnl Perform the following tests also if --disable-nls has been given,
   dnl because they are needed for "make dist" to work.
@@ -3527,7 +3540,7 @@ AC_DEFUN([AM_XGETTEXT_OPTION],
 ])
 
 # printf-posix.m4 serial 6 (gettext-0.18.2)
-dnl Copyright (C) 2003, 2007, 2009-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2003, 2007, 2009-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -3576,7 +3589,7 @@ int main ()
 ])
 
 # progtest.m4 serial 7 (gettext-0.18.2)
-dnl Copyright (C) 1996-2003, 2005, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 1996-2003, 2005, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -3668,7 +3681,7 @@ AC_SUBST([$1])dnl
 ])
 
 # size_max.m4 serial 10
-dnl Copyright (C) 2003, 2005-2006, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2003, 2005-2006, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -3748,7 +3761,7 @@ m4_ifdef([AC_COMPUTE_INT], [], [
 ])
 
 # stdint_h.m4 serial 9
-dnl Copyright (C) 1997-2004, 2006, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 1997-2004, 2006, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -3776,7 +3789,7 @@ AC_DEFUN([gl_AC_HEADER_STDINT_H],
 ])
 
 # threadlib.m4 serial 10 (gettext-0.18.2)
-dnl Copyright (C) 2005-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2005-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -4148,7 +4161,7 @@ dnl   0.5 if the first test terminates OK but the second one loops endlessly,
 dnl   0.0 if the first test already loops endlessly.
 
 # uintmax_t.m4 serial 12
-dnl Copyright (C) 1997-2004, 2007-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 1997-2004, 2007-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -4179,7 +4192,7 @@ AC_DEFUN([gl_AC_TYPE_UINTMAX_T],
 ])
 
 # visibility.m4 serial 5 (gettext-0.18.2)
-dnl Copyright (C) 2005, 2008, 2010-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2005, 2008, 2010-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -4257,7 +4270,7 @@ AC_DEFUN([gl_VISIBILITY],
 ])
 
 # wchar_t.m4 serial 4 (gettext-0.18.2)
-dnl Copyright (C) 2002-2003, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2002-2003, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -4282,7 +4295,7 @@ AC_DEFUN([gt_TYPE_WCHAR_T],
 ])
 
 # wint_t.m4 serial 5 (gettext-0.18.2)
-dnl Copyright (C) 2003, 2007-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2003, 2007-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -4315,7 +4328,7 @@ AC_DEFUN([gt_TYPE_WINT_T],
 ])
 
 # xsize.m4 serial 5
-dnl Copyright (C) 2003-2004, 2008-2013 Free Software Foundation, Inc.
+dnl Copyright (C) 2003-2004, 2008-2014 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
