@@ -86,7 +86,7 @@ msgstr ""
 #: e2fsck/badblocks.c:23 misc/mke2fs.c:211
 #, c-format
 msgid "Bad block %u out of range; ignored.\n"
-msgstr "Dåligt block %u utanför giltigt intervall; ignoreras.\n"
+msgstr "Warui blokk %u wa outsaid välid intervol; ignoren.\n"
 
 #: e2fsck/badblocks.c:46
 msgid "while sanity checking the bad blocks inode"
